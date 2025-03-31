@@ -115,6 +115,29 @@ a {
     overflow-y: auto;
 }
 
+.sidebar-category.active>a {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.sidebar-subcategoria a {
+    margin-left: 15px;
+    font-size: 0.85rem;
+    color: #bdbdbd;
+    display: block;
+    padding: 2px 0;
+}
+
+.sidebar-subcategoria a:hover {
+    color: #ffffff;
+}
+
+.sidebar-category .subcategoria-list {
+    margin-top: 6px;
+    margin-bottom: 10px;
+}
+
+
 /* Menu principal */
 .menu ul {
     list-style: none;
@@ -268,6 +291,18 @@ a {
     font-weight: 500;
 }
 
+/* Efeito de clique na categoria ativa */
+.category-card.active {
+    background-color: #00adee;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(0, 173, 238, 0.5);
+    transform: scale(1.05);
+}
+
+.category-card.active i {
+    color: #fff;
+}
+
 /* ------------------- Itens ------------------- */
 /* Se estiver usando reset.css, não precisa repetir resets */
 .items-section {
@@ -313,12 +348,37 @@ a {
     /* Imagem em cima, texto embaixo */
     color: #fff;
     cursor: default;
+
+    opacity: 0;
+    animation: fadeIn 0.3s ease forwards, slideUp 0.3s ease forwards;
+    animation-delay: 0s, 0s;
+    /* Ajuste o delay conforme necessário */
+
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    will-change: transform, opacity;
+    /* Melhora performance em animações */
 }
 
 .item-card:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 10px rgb(2, 111, 253);
+}
+
+/* Separando a animação em duas */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
 }
 
 /* Imagem do produto */
