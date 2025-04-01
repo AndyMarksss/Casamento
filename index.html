@@ -33,6 +33,7 @@
         <!-- Menu Lateral -->
         <aside class="sidebar">
 
+            <!-- Início Menu -->
             <nav class="menu">
                 <ul>
                     <li>
@@ -49,24 +50,19 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fas fa-th-large"></i>
-                            Categorias
+                            <i class="fas fa-gift"></i>
+                            Presentes Já Recebidos
                         </a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="fas fa-tags"></i>
-                            Marcas
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-hashtag"></i>
-                            Tags
+                        <a href="#" id="abrirPixModal" onclick="abrirPixModal()">
+                            <i class="fas fa-qrcode"></i>
+                            Pix
                         </a>
                     </li>
                 </ul>
             </nav>
+            <!-- Fim Menu -->
 
             <!-- Seção de Categorias -->
             <div class="categories">
@@ -81,21 +77,23 @@
                 <!-- Fim da Lista de Categorias -->
 
             </div>
+            <!-- Fim da Seção de Categorias -->
+
         </aside>
         <!-- Fim do Menu Lateral -->
 
         <!-- Área principal do site -->
         <main class="main-content">
-            
-            <!-- Filtro de Categorias -->
+
+            <!-- Filtro de Categorias Topo -->
             <section class="filter-categories">
 
                 <h2 class="filter-title">Categorias</h2>
 
                 <div class="categories-grid">
 
-                    <div class="category-card" data-category="todos">
-                        <i class="fas fa-th-list"></i>
+                    <div class="category-card active" data-category="todos">
+                        <i class="fas fa-list"></i>
                         <span>Todos os Itens</span>
                     </div>
 
@@ -132,14 +130,21 @@
                 </div>
 
             </section>
-            <!-- Fim do Filtro de Categorias -->
+            <!-- Fim do Filtro de Categorias Topo -->
+
+            <!-- Título Dinâmico de Categoria -->
+            <div class="categoria-header">
+                <h2 id="tituloCategoria">Todos os Itens</h2>
+            </div>
+            <!-- Fim do Título Dinâmico de Categoria -->
 
             <!-- Lista de Itens -->
             <section class="items-section">
 
                 <!-- Filtro -->
                 <div class="items-header">
-                    <button class="sort-btn" data-sort="date">Data de Adição</button>
+                    <button class="sort-btn status-btn ja-temos-btn" data-status="ja-temos">Já Temos</button>
+                    <button class="sort-btn status-btn nao-temos-btn" data-status="nao-temos">Não Temos</button>
                     <button class="sort-btn" data-sort="price-asc">Preço (Menor → Maior)</button>
                     <button class="sort-btn" data-sort="price-desc">Preço (Maior → Menor)</button>
                 </div>
@@ -152,7 +157,6 @@
                 <!-- Fim da lista de itens -->
 
             </section>
-
             <!-- Fim da lista de itens -->
 
         </main>
@@ -160,6 +164,23 @@
 
     </div>
     <!-- Fim do Container Principal -->
+
+    <!-- Modal do Pix -->
+    <div id="pixModal" class="pix-modal">
+        <div class="pix-modal-content" id="pixContent">
+            <span class="pix-close" onclick="fecharPixModal()">&times;</span>
+            <h2>Dados para Pix</h2>
+            <p><strong>Nome:</strong> Anderson Barbosa Marques da Silva</p>
+            <p><strong>Chave Pix:</strong>
+                <span id="chavePix">a0a38876-3861-4740-b9d7-f6d8730b4f76</span>
+                <button id="copiarChavePix" class="copiar-btn" title="Copiar">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </p>
+            <img src="src/assets/images/pix-nu.png" alt="QR Code Pix" class="pix-qr">
+        </div>
+    </div>
+    <!-- Fim do Modal do Pix -->
 
     <!-- JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>

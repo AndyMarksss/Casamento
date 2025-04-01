@@ -1,325 +1,301 @@
-/* style.css */
-
+/* ============================= */
+/* RESET BÁSICO (se não tiver reset.css) */
+/* ============================= */
 html {
     font-size: 16px;
-    /* Ajuste conforme necessidade */
 }
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5;
-    color: #333;
+    margin: 0;
+    color: #fff;
     background-color: #1f1f1f;
 }
 
-/* ---------------- */
-/* Tipografia básica */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    margin-bottom: 0.5em;
-    font-weight: 600;
-}
-
-p {
-    margin-bottom: 1rem;
-}
-
-a {
-    cursor: pointer;
-    /* Cor e decoração do link (você pode alterar conforme a identidade visual) */
-    color: #0066cc;
-    text-decoration: underline;
-}
-
-/* Se já tem reset.css, você não precisa zerar margens/paddings aqui. */
-
-/* -------------------- Cabeçalho --------------------------- */
-/* Container do cabeçalho (Hero) */
+/* ============================= */
+/* HERO SECTION */
+/* ============================= */
 .hero-section {
-    /* Altura do “banner” superior */
     height: 300px;
-
-    /* Gradiente de cima (azul) para baixo (preto).
-       Ajuste as cores, ângulos e intensidade conforme desejar. */
     background: linear-gradient(rgba(12, 74, 142, 0.5), rgba(0, 0, 0, 0.7)),
         url(../assets/images/presentes.png);
-    /* Para alinhar conteúdo no centro tanto horizontal quanto verticalmente */
     display: flex;
     justify-content: left;
     align-items: end;
-    /* Espaçamento interno opcional */
     padding: 60px 200px;
-    /* Ajuste conforme necessário */
-    /* Sombra no texto */
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-/* Conteúdo interno do cabeçalho */
 .hero-content {
-    text-align: left;
-    /* Centraliza texto e imagem dentro do header */
-    color: #ffffff;
-    /* Fonte branca para destacar no fundo escuro */
+    color: #fff;
 }
 
-/* Ícone do presente */
 .hero-content img {
     width: 40px;
-    /* Tamanho desejado do ícone */
-    height: auto;
-    display: block;
     margin: 0 auto 1px;
-    /* Centraliza e dá espaço abaixo */
-    /* Colocar img na esquerda */
-    justify-content: left;
 }
 
-/* Título principal */
 .hero-title {
     font-size: 2rem;
     margin-top: 0;
-    /* Remove qualquer espaçamento extra */
 }
 
-/* ------------------- Contêiner geral ------------------- */
+/* ============================= */
+/* LAYOUT PRINCIPAL */
+/* ============================= */
 .container {
     display: flex;
-    /* Cria layout em colunas: sidebar + main */
-    min-height: calc(100vh - 200px);
-    /* Altura total menos a altura do cabeçalho */
     width: 100%;
+    min-height: calc(100vh - 200px);
     background-color: #2b2b2b;
-
 }
 
-/* ------------------------ MENU LATERAL ------------------------ */
-/* Sidebar */
 .sidebar {
     width: 250px;
     background-color: #2b2b2b;
     padding: 20px;
-    box-sizing: border-box;
     position: sticky;
-    /* Chave para fixar no topo */
     top: 0;
-    /* Distância do topo em que ela “cola” */
-    align-self: flex-start;
-    /* Se o container for flex, ajuda a “grudar” direitinho */
-
     max-height: 100vh;
-    /* Para permitir rolagem interna, se quiser */
     overflow-y: auto;
+    box-sizing: border-box;
 }
 
-.sidebar-category.active>a {
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.sidebar-subcategoria a {
-    margin-left: 15px;
-    font-size: 0.85rem;
-    color: #bdbdbd;
-    display: block;
-    padding: 2px 0;
-}
-
-.sidebar-subcategoria a:hover {
-    color: #ffffff;
-}
-
-.sidebar-category .subcategoria-list {
-    margin-top: 6px;
-    margin-bottom: 10px;
-}
-
-
-/* Menu principal */
+/* ============================= */
+/* MENU LATERAL */
+/* ============================= */
 .menu ul {
     list-style: none;
     padding: 0;
-    margin: 0 0 20px;
-    /* Espaço abaixo para separar do bloco de categorias */
+    margin-bottom: 20px;
 }
 
 .menu li {
     margin-bottom: 10px;
-    /* Espaço entre os itens */
 }
 
 .menu a {
+    display: block;
     text-decoration: none;
     color: #bdbdbd;
     font-size: 0.95rem;
-    display: block;
     padding: 8px 10px;
     border-radius: 4px;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .menu a:hover {
     background-color: #3a3a3a;
-    color: #ffffff;
+    color: #fff;
 }
 
-/* Seção de categorias */
+/* ============================= */
+/* CATEGORIAS SIDEBAR */
+/* ============================= */
 .categories {
     margin-top: 20px;
 }
 
 .categories-toggle {
-    background: none;
-    color: #bdbdbd;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    padding: 8px 0;
-    width: 100%;
-    text-align: left;
-    /* Alinha texto à esquerda */
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #e0e0e0;
     display: flex;
     align-items: center;
     gap: 6px;
-    /* Espaço entre ícone e texto (se usar ícones) */
-    transition: color 0.2s ease;
+    margin-bottom: 10px;
+    cursor: default;
 }
 
-.categories-toggle:hover {
-    color: #ffffff;
-}
-
-/* Lista de categorias */
-.categories-list {
-    list-style: none;
-    padding-left: 10px;
-    /* Indentação */
-    margin-top: 10px;
-}
-
-.categories-list li {
+.sidebar-category {
     margin-bottom: 8px;
 }
 
-.categories-list a {
+.sidebar-category>a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ccc;
+    font-weight: 500;
+    padding: 6px 8px;
+    border-radius: 6px;
     text-decoration: none;
-    color: #bdbdbd;
-    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.sidebar-category>a:hover {
+    background-color: #3a3a3a;
+}
+
+.sidebar-category.active>a {
+    background-color: #4285f4;
+    color: #fff;
+    font-weight: bold;
+}
+
+.sidebar-category.expanded>a {
+    background-color: #4285f4;
+    color: #fff;
+}
+
+.sidebar-category .toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.sidebar-category.expanded .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.subcategoria-list {
+    margin-left: 16px;
+    list-style: none;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar-category.expanded .subcategoria-list {
+    max-height: 500px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.sidebar-subcategoria a {
     display: block;
-    padding: 4px 0;
-    transition: color 0.2s ease;
-    margin: 0 0 0 10px;
+    padding: 5px 12px;
+    color: #aaa;
+    font-weight: 400;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.categories-list a:hover {
-    color: #ffffff;
+.sidebar-subcategoria a:hover {
+    background-color: #3a3a3a;
+    color: #fff;
 }
 
-/* ------------------- Área principal do site ------------------- */
-/* style.css */
+.sidebar-subcategoria.active a,
+.sidebar-subcategoria a.active {
+    background-color: #383838;
+    color: #fff;
+    font-weight: 500;
+}
 
-/* Se você já tem reset.css, não precisa repetir resets básicos aqui. */
-
-/* Container principal */
+/* ============================= */
+/* CONTEÚDO PRINCIPAL */
+/* ============================= */
 .main-content {
     flex: 1;
     padding: 20px;
     background-color: #1f1f1f;
-    /* Fundo escuro do “corpo” */
-    min-height: 100vh;
-
 }
 
-/* Seção de filtro de categorias */
 .filter-categories {
     background-color: #2b2b2b;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    /* Espaço abaixo, se tiver outros conteúdos */
 }
 
-/* Título da seção */
 .filter-title {
     font-size: 1.2rem;
     color: #fff;
     margin-bottom: 10px;
 }
 
-/* Grid de categorias */
 .categories-grid {
     display: grid;
     grid-gap: 20px;
-    /* Ajuste quantas colunas cabem em cada linha (auto-fit e minmax ajudam na responsividade) */
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
 }
 
-/* Cartão de categoria */
 .category-card {
     background-color: #caf3f0;
-    /* Cor clara, similar ao print (ajuste à vontade) */
     color: #333;
-    /* Texto escuro para contraste */
     border-radius: 8px;
     padding: 15px;
     text-align: center;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
 .category-card:hover {
     background-color: #b3e3e0;
-    /* Efeito de hover */
 }
 
-/* Ícones dentro do cartão */
-.category-card i {
-    font-size: 1.5rem;
-    margin-bottom: 8px;
-}
-
-/* Nome da categoria */
-.category-card span {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-/* Efeito de clique na categoria ativa */
 .category-card.active {
-    background-color: #00adee;
+    background-color: #2196f3;
     color: #fff;
-    box-shadow: 0 0 8px rgba(0, 173, 238, 0.5);
-    transform: scale(1.05);
+    font-weight: bold;
+    box-shadow: 0 0 5px #2196f3;
 }
 
 .category-card.active i {
     color: #fff;
 }
 
-/* ------------------- Itens ------------------- */
-/* Se estiver usando reset.css, não precisa repetir resets */
-.items-section {
-    margin-top: 20px;
-    /* Espaço acima */
+.category-card[data-category="todos"].active {
+    background-color: #4285f4 !important;
+    box-shadow: 0 0 5px #4285f4;
 }
 
-/* Cabeçalho com botões de ordenação */
+/* ============================= */
+/* TÍTULO DINÂMICO */
+/* ============================= */
+.categoria-header {
+    padding: 0 10px;
+}
+
+#tituloCategoria {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 20px 0 10px;
+    color: #fff;
+}
+
+#tituloCategoria .titulo-main {
+    color: #fff;
+    font-weight: 500;
+}
+
+#tituloCategoria .titulo-main.muted {
+    color: #888;
+}
+
+#tituloCategoria .titulo-sub {
+    color: #fff;
+    font-weight: 600;
+}
+
+#tituloCategoria .titulo-count {
+    color: #bbb;
+    font-weight: 400;
+    margin-left: 4px;
+}
+
+/* ============================= */
+/* LISTA DE ITENS */
+/* ============================= */
+.items-section {
+    margin-top: 20px;
+}
+
 .items-header {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 20px;
 }
 
 .sort-btn {
     background-color: #353535;
-    color: #ffffff;
+    color: #fff;
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
@@ -330,33 +306,42 @@ a {
     background-color: #454545;
 }
 
-/* Grid de Itens */
+.sort-btn.active {
+    background-color: #555;
+    color: #fff;
+}
+
+/* Botão de filtro ativo: Já Temos (verde) */
+.sort-btn.active[data-status="ja-temos"] {
+    background-color: #27ae60;
+    /* mesma cor do status */
+    color: white;
+}
+
+/* Botão de filtro ativo: Não Temos (vermelho) */
+.sort-btn.active[data-status="nao-temos"] {
+    background-color: #c0392b;
+    /* mesma cor do status */
+    color: white;
+}
+
+
 .items-grid {
     display: grid;
     grid-gap: 20px;
-    /* Ajuste as colunas: auto-fill e minmax para responsividade */
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
-/* Card de cada item */
 .item-card {
     background-color: #2b2b2b;
     border-radius: 8px;
     overflow: hidden;
+    color: #fff;
     display: flex;
     flex-direction: column;
-    /* Imagem em cima, texto embaixo */
-    color: #fff;
-    cursor: default;
-
-    opacity: 0;
+    transition: transform 0.2s, box-shadow 0.2s;
     animation: fadeIn 0.3s ease forwards, slideUp 0.3s ease forwards;
-    animation-delay: 0s, 0s;
-    /* Ajuste o delay conforme necessário */
-
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
     will-change: transform, opacity;
-    /* Melhora performance em animações */
 }
 
 .item-card:hover {
@@ -364,7 +349,6 @@ a {
     box-shadow: 0 4px 10px rgb(2, 111, 253);
 }
 
-/* Separando a animação em duas */
 @keyframes fadeIn {
     to {
         opacity: 1;
@@ -381,20 +365,13 @@ a {
     }
 }
 
-/* Imagem do produto */
 .item-card img {
     width: 100%;
     height: 160px;
-    /* Ajuste conforme precisar */
     object-fit: contain;
-    /* Mantém proporção, “corta” se precisar */
-    display: block;
-    /* Remove possíveis espaços em display inline */
     background-color: #fff;
-    /* Cor de fundo atrás da imagem (opcional) */
 }
 
-/* Container de texto do item */
 .item-info {
     padding: 15px 10px;
     display: flex;
@@ -402,67 +379,74 @@ a {
     gap: 10px;
 }
 
-/* Nome do item */
 .item-name {
     font-size: 1rem;
     margin: 0;
 }
 
-/* Preço do item */
 .item-price {
     font-size: 0.95rem;
     color: #bdbdbd;
     margin: 0;
 }
 
-/* STATUS do produto */
 .status {
-    display: inline-block;
     align-self: flex-start;
     padding: 4px 10px;
     font-size: 0.85rem;
     border-radius: 20px;
     margin: 2px 0;
-    color: #ffffff;
+    color: #fff;
 }
 
-/* Status: Já Temos (verde) */
 .ja-temos {
     background-color: #27ae60;
-    /* ou #00b300, etc. */
 }
 
-/* Status: Não Temos (vermelho) */
 .nao-temos {
     background-color: #c0392b;
-    /* ou #e74c3c, etc. */
 }
 
-/* Link do produto */
+/* Botões de status */
+.status-btn.ja-temos-btn.active {
+    background-color: #27ae60;
+    /* Verde */
+    color: #fff;
+    font-weight: bold;
+}
+
+.status-btn.nao-temos-btn.active {
+    background-color: #c0392b;
+    /* Vermelho */
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Botões de ordenação ativos */
+.sort-btn.active:not(.status-btn) {
+    background-color: #4285f4;
+    color: white;
+    font-weight: bold;
+}
+
 .item-link {
     display: inline-block;
     position: relative;
-    /* para posicionar o pseudo-elemento */
     padding: 4px 8px;
     border: 1px solid #00adee;
     border-radius: 4px;
     color: #00adee;
     text-decoration: none;
     font-size: 0.85rem;
-    transition: color 0.3s ease;
-    /* Anima apenas a cor do texto */
+    transition: color 0.3s;
     overflow: hidden;
-    /* Oculta o pseudo-elemento que vai “crescer” */
     z-index: 1;
-    /* Garante que o texto fique acima do pseudo-elemento */
 }
 
 .item-link:hover {
     color: #fff;
-    /* Fica branco quando o fundo se preenche */
 }
 
-/* Antes do hover, a largura do background é 0 */
 .item-link::before {
     content: "";
     position: absolute;
@@ -472,13 +456,10 @@ a {
     height: 100%;
     background-color: #00adee;
     z-index: -1;
-    /* Fica atrás do texto */
     border-radius: 4px;
-    transition: width 0.3s ease;
-    /* Anima a mudança de largura */
+    transition: width 0.3s;
 }
 
-/* Ao passar o mouse, o pseudo-elemento preenche todo o botão */
 .item-link:hover::before {
     width: 100%;
 }
@@ -487,12 +468,136 @@ a {
     margin-right: 6px;
 }
 
-/* Data de atualização das informações do produto */
 .item-date {
     font-size: 0.8rem;
-    /* Menor que o item-price */
-    color: #999999;
-    /* Tom mais claro/discreto */
+    color: #999;
     margin: 2px 0;
-    /* Margem sutil */
+}
+
+/* ============================= */
+/* RESPONSIVO */
+/* ============================= */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: relative;
+        max-height: none;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .items-header {
+        flex-direction: column;
+    }
+}
+
+/* ============================= */
+/* MODAL PIX*/
+/* ============================= */
+/* Modal geral */
+.pix-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Quando o modal estiver visível */
+.pix-modal.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Caixa do conteúdo */
+.pix-modal-content {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    transform: scale(0.9);
+    animation: fadeInModal 0.4s ease forwards;
+}
+
+/* Animação de entrada */
+@keyframes fadeInModal {
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Botão de fechar */
+.pix-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.2s ease;
+}
+
+.pix-close:hover {
+    color: #fff;
+}
+
+/* QR Code */
+.pix-qr {
+    width: 200px;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+/* Títulos e textos */
+.pix-modal-content h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #7dd3fc;
+}
+
+.pix-modal-content p {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+
+.pix-modal-content strong {
+    color: #ffffff;
+}
+
+/* Botão de copiar Pix */
+.copiar-btn {
+    background: none;
+    border: none;
+    color: #7dd3fc;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-left: 10px;
+    transition: color 0.2s ease;
+}
+
+.copiar-btn:hover {
+    color: #fff;
 }
