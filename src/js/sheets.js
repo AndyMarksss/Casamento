@@ -324,20 +324,30 @@ function setupStatusAndSortButtons() {
 // ==============================
 // 12. MODAL DO PIX
 // ==============================
+
 // Modal Pix: abrir e fechar
 function abrirPixModal() {
-    document.getElementById("pixModal").classList.add("show");
+    const modal = document.getElementById('pixModal');
+    modal.classList.add('ativo');
+    modal.classList.remove('fechando');
 }
 
 function fecharPixModal() {
-    document.getElementById("pixModal").classList.remove("show");
+    const modal = document.getElementById('pixModal');
+    modal.classList.add('fechando'); // Adiciona a animação de fechamento
+
+    setTimeout(() => {
+        modal.classList.remove('ativo', 'fechando'); // Remove as classes para ocultar o modal
+    }, 300); // Tempo igual ao da animação de fechamento
 }
 
 // Fechar ao clicar fora do conteúdo do modal
 document.addEventListener("click", function (event) {
     const modal = document.getElementById("pixModal");
     const content = document.getElementById("pixContent");
-    if (modal.classList.contains("show") && !content.contains(event.target) && event.target.id !== "abrirPixModal") {
+
+    // Verifica se o clique foi fora do modal
+    if (modal.classList.contains("ativo") && !content.contains(event.target) && !event.target.closest("#abrirPixModal")) {
         fecharPixModal();
     }
 });
@@ -350,11 +360,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (btnCopiar && chave) {
         btnCopiar.addEventListener("click", () => {
             navigator.clipboard.writeText(chave.innerText).then(() => {
-                btnCopiar.innerHTML = '<i class="fas fa-check"></i>';
+                // Modifica o conteúdo do botão para "Copiado"
+                btnCopiar.innerHTML = '<i class="fas fa-check"></i> Copiado!';
+                // Adiciona a classe "copiado" para mudança de cor
+                btnCopiar.classList.add("copiado");
+
+                // Após 2 segundos, restaura o botão original
                 setTimeout(() => {
-                    btnCopiar.innerHTML = '<i class="fas fa-copy"></i>';
-                }, 1500);
+                    btnCopiar.innerHTML = '<i class="fas fa-copy"></i> Copiar chave Pix';
+                    btnCopiar.classList.remove("copiado");
+                }, 2000);
             });
         });
     }
 });
+
