@@ -90,6 +90,15 @@ body {
     color: #fff;
 }
 
+/* Estilo para o link ativo no menu lateral principal */
+.menu a.active {
+    color: #ffffff;
+    /* Ou outra cor de destaque */
+    font-weight: bold;
+    /* Opcional: Adicionar um fundo sutil, similar ao hover */
+    background-color: #3a3a3a;
+}
+
 /* ============================= */
 /* CATEGORIAS SIDEBAR */
 /* ============================= */
@@ -748,4 +757,49 @@ body {
 .copiar-btn:hover {
     color: #ffffff;
     text-decoration: underline;
+}
+
+#menuMaisDesejados.active {
+    color: red;
+}
+
+#menuMaisDesejados.active i {
+    color: red;
+}
+
+/* Filtro "Mais Desejados" ativo – deixa o texto e o ícone em vermelho */
+#menuMaisDesejados.active {
+    color: red;
+}
+
+#menuMaisDesejados.active i {
+    color: red;
+}
+
+/* Filtro "Presentes Já Recebidos" ativo – deixa o texto e o ícone em verde */
+#menuPresentesRecebidos.active {
+    color: #90ee90;
+}
+
+#menuPresentesRecebidos.active i {
+    color: #90ee90;
+}
+
+.item-card.card-nao-temos {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito de destaque para "Mais desejados": borda/glow em tom vermelho */
+.item-card.card-nao-temos:hover {
+    /* Usamos uma animação que inicia com um glow forte e depois se estabiliza */
+    box-shadow: 0 4px 10px red;
+}
+
+.item-card.item-card.card-ja-temos {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Efeito de destaque para "Já temos": borda/glow em tom verde claro */
+.item-card.card-ja-temos:hover {
+    box-shadow: 0 4px 10px #90ee90;
 }
