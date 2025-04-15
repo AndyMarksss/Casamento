@@ -1,5 +1,5 @@
 /* ============================= */
-/* RESET BÁSICO (se não tiver reset.css) */
+/* 1. RESET BÁSICO (se não tiver reset.css) */
 /* ============================= */
 html {
     font-size: 16px;
@@ -14,56 +14,130 @@ body {
 }
 
 /* ============================= */
-/* HERO SECTION */
+/* 2. HERO SECTION               */
 /* ============================= */
 .hero-section {
+    position: relative;
     height: 300px;
     background: linear-gradient(rgba(12, 74, 142, 0.5), rgba(0, 0, 0, 0.7)),
-        url(../assets/images/presentes.png);
+        url("../assets/images/presentes.png") center/cover no-repeat;
     display: flex;
-    justify-content: left;
-    align-items: end;
-    padding: 60px 200px;
+    justify-content: center;
+    align-items: center;
     text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+/* ---------- Overlay sutil sobre a imagem (2.1) ---------- */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
 }
 
 .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeSlideIn 0.8s forwards ease;
+}
+
+/* ---------- Animação de entrada (2.2) ---------- */
+@keyframes fadeSlideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* ---------- Ícone (presente) (2.3) ---------- */
+.hero-icon {
+    width: 2rem;
+    height: auto;
+}
+
+/* ---------- Título principal (2.4) ---------- */
+.hero-title {
+    font-size: 2rem;
+    margin: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+/* ---------- Nome do casal cursivo (2.5) ---------- */
+.couple-names {
+    font-family: "Great Vibes", cursive;
+    font-size: 2.4rem;
+    color: #ffd1dc;
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Decoração / enfeite (2.6) ---------- */
+.couple-decor {
+    font-size: 1.2rem;
+    color: #ffd1dc;
+}
+
+/* ---------- Contagem regressiva (2.7) ---------- */
+.countdown-container {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.countdown {
+    font-size: 1.2rem;
+    font-weight: 500;
     color: #fff;
 }
 
-.hero-content img {
-    width: 40px;
-    margin: 0 auto 1px;
-}
-
-.hero-title {
-    font-size: 2rem;
-    margin-top: 0;
-}
-
 /* ============================= */
-/* LAYOUT PRINCIPAL */
+/* 3. LAYOUT PRINCIPAL           */
 /* ============================= */
 .container {
     display: flex;
+    padding-bottom: 60px;
+    /* reserva espaço p/ rodapé fixo */
     width: 100%;
     min-height: calc(100vh - 200px);
     background-color: #2b2b2b;
 }
 
+/* ---------- Sidebar (desktop normal) (3.1) ---------- */
 .sidebar {
-    width: 250px;
-    background-color: #2b2b2b;
-    padding: 20px;
     position: sticky;
     top: 0;
+    left: 0;
+    width: 250px;
     max-height: 100vh;
     overflow-y: auto;
+    background-color: #2b2b2b;
+    padding: 20px;
     box-sizing: border-box;
+    /* sem transform no desktop */
 }
 
 /* ============================= */
-/* MENU LATERAL */
+/* 4. MENU LATERAL               */
 /* ============================= */
 .menu ul {
     list-style: none;
@@ -90,17 +164,15 @@ body {
     color: #fff;
 }
 
-/* Estilo para o link ativo no menu lateral principal */
+/* ---------- Link ativo no menu lateral (4.1) ---------- */
 .menu a.active {
     color: #ffffff;
-    /* Ou outra cor de destaque */
     font-weight: bold;
-    /* Opcional: Adicionar um fundo sutil, similar ao hover */
     background-color: #3a3a3a;
 }
 
 /* ============================= */
-/* CATEGORIAS SIDEBAR */
+/* 5. CATEGORIAS SIDEBAR         */
 /* ============================= */
 .categories {
     margin-top: 20px;
@@ -117,6 +189,7 @@ body {
     cursor: default;
 }
 
+/* ---------- Categoria principal ---------- */
 .sidebar-category {
     margin-bottom: 8px;
 }
@@ -137,17 +210,15 @@ body {
     background-color: #3a3a3a;
 }
 
-.sidebar-category.active>a {
+/* Categoria expandida/ativa (5.1) */
+.sidebar-category.active>a,
+.sidebar-category.expanded>a {
     background-color: #4285f4;
     color: #fff;
     font-weight: bold;
 }
 
-.sidebar-category.expanded>a {
-    background-color: #4285f4;
-    color: #fff;
-}
-
+/* Ícone de toggle */
 .sidebar-category .toggle-icon {
     transition: transform 0.3s ease;
 }
@@ -156,6 +227,7 @@ body {
     transform: rotate(90deg);
 }
 
+/* ---------- Subcategorias ---------- */
 .subcategoria-list {
     margin-left: 16px;
     list-style: none;
@@ -165,6 +237,7 @@ body {
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
+/* Quando expandida */
 .sidebar-category.expanded .subcategoria-list {
     max-height: 500px;
     padding-top: 8px;
@@ -194,7 +267,7 @@ body {
 }
 
 /* ============================= */
-/* CONTEÚDO PRINCIPAL */
+/* 6. CONTEÚDO PRINCIPAL         */
 /* ============================= */
 .main-content {
     flex: 1;
@@ -202,6 +275,7 @@ body {
     background-color: #1f1f1f;
 }
 
+/* ---------- Filtro de categorias (6.1) ---------- */
 .filter-categories {
     background-color: #2b2b2b;
     padding: 20px;
@@ -255,7 +329,7 @@ body {
 }
 
 /* ============================= */
-/* TÍTULO DINÂMICO */
+/* 7. TÍTULO DINÂMICO           */
 /* ============================= */
 .categoria-header {
     padding: 0 10px;
@@ -289,12 +363,13 @@ body {
 }
 
 /* ============================= */
-/* LISTA DE ITENS */
+/* 8. LISTA DE ITENS             */
 /* ============================= */
 .items-section {
     margin-top: 20px;
 }
 
+/* ---------- Botões de filtro e ordenação ---------- */
 .items-header {
     display: flex;
     flex-wrap: wrap;
@@ -320,34 +395,34 @@ body {
     color: #fff;
 }
 
-/* Botão de filtro ativo: Já Temos (verde) */
+/* Filtros ativos (8.1) */
 .sort-btn.active[data-status="ja-temos"] {
     background-color: #27ae60;
-    /* mesma cor do status */
     color: white;
 }
 
-/* Botão de filtro ativo: Não Temos (vermelho) */
 .sort-btn.active[data-status="nao-temos"] {
     background-color: #c0392b;
-    /* mesma cor do status */
     color: white;
 }
 
-
+/* ---------- Grid de itens ---------- */
 .items-grid {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    align-items: stretch;
 }
 
+/* Cards de item (8.2) */
 .item-card {
     background-color: #2b2b2b;
     border-radius: 8px;
-    overflow: hidden;
     color: #fff;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
     animation: fadeIn 0.3s ease forwards, slideUp 0.3s ease forwards;
     will-change: transform, opacity;
@@ -355,9 +430,10 @@ body {
 
 .item-card:hover {
     transform: scale(1.03);
-    box-shadow: 0 4px 10px rgb(2, 111, 253);
+    box-shadow: 0 4px 10px #c0392b;
 }
 
+/* ---------- Animações de entrada (8.3) ---------- */
 @keyframes fadeIn {
     to {
         opacity: 1;
@@ -382,29 +458,37 @@ body {
 }
 
 .item-info {
-    padding: 15px 10px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    padding: 15px 10px;
 }
 
 .item-name {
     font-size: 1rem;
-    margin: 0;
+    line-height: 1.2;
+    margin: 0 0 4px;
+    min-height: 2.4em;
 }
 
 .item-price {
     font-size: 0.95rem;
     color: #bdbdbd;
     margin: 0;
+    min-height: 1.6em;
+    display: flex;
+    align-items: center;
 }
 
+/* ---------- Status (8.4) ---------- */
 .status {
     align-self: flex-start;
     padding: 4px 10px;
     font-size: 0.85rem;
     border-radius: 20px;
     margin: 2px 0;
+    min-height: 1.6em;
     color: #fff;
 }
 
@@ -416,29 +500,27 @@ body {
     background-color: #c0392b;
 }
 
-/* Botões de status */
 .status-btn.ja-temos-btn.active {
     background-color: #27ae60;
-    /* Verde */
     color: #fff;
     font-weight: bold;
 }
 
 .status-btn.nao-temos-btn.active {
     background-color: #c0392b;
-    /* Vermelho */
     color: #fff;
     font-weight: bold;
 }
 
-/* Botões de ordenação ativos */
 .sort-btn.active:not(.status-btn) {
     background-color: #4285f4;
     color: white;
     font-weight: bold;
 }
 
+/* ---------- Link do item (rodapé do card) ---------- */
 .item-link {
+    margin-top: auto;
     display: inline-block;
     position: relative;
     padding: 4px 8px;
@@ -447,9 +529,9 @@ body {
     color: #00adee;
     text-decoration: none;
     font-size: 0.85rem;
-    transition: color 0.3s;
     overflow: hidden;
     z-index: 1;
+    transition: color 0.3s;
 }
 
 .item-link:hover {
@@ -480,40 +562,15 @@ body {
 .item-date {
     font-size: 0.8rem;
     color: #999;
-    margin: 2px 0;
+    margin: 0;
+    min-height: 1.6em;
+    display: flex;
+    align-items: center;
 }
 
 /* ============================= */
-/* RESPONSIVO */
+/* 9. MODAL PIX                  */
 /* ============================= */
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        position: relative;
-        max-height: none;
-    }
-
-    .main-content {
-        padding: 10px;
-    }
-
-    .categories-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-
-    .items-header {
-        flex-direction: column;
-    }
-}
-
-/* ============================= */
-/* MODAL PIX*/
-/* ============================= */
-/* Modal geral */
 .pix-modal {
     display: none;
     position: fixed;
@@ -528,14 +585,13 @@ body {
     transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-/* Quando o modal estiver visível */
 .pix-modal.show {
     display: block;
     opacity: 1;
     visibility: visible;
 }
 
-/* Caixa do conteúdo */
+/* ---------- Caixa do conteúdo (9.1) ---------- */
 .pix-modal-content {
     background-color: #2e2e2e;
     color: #ffffff;
@@ -551,14 +607,13 @@ body {
     animation: fadeInModal 0.4s ease forwards;
 }
 
-/* Animação de entrada */
+/* ---------- Animação de entrada (9.2) ---------- */
 @keyframes fadeInModal {
     to {
         transform: scale(1);
     }
 }
 
-/* Botão de fechar */
 .pix-close {
     position: absolute;
     top: 12px;
@@ -573,7 +628,6 @@ body {
     color: #fff;
 }
 
-/* QR Code */
 .pix-qr {
     width: 200px;
     height: auto;
@@ -581,7 +635,6 @@ body {
     border-radius: 6px;
 }
 
-/* Títulos e textos */
 .pix-modal-content h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -597,10 +650,9 @@ body {
     color: #ffffff;
 }
 
-/* Botão de copiar chave Pix */
+/* ---------- Botão de copiar chave Pix (9.3) ---------- */
 .copiar-btn {
     background-color: #4285f4;
-    /* Cor do botão (pode ser alterada conforme a categoria) */
     border: none;
     color: white;
     padding: 12px 24px;
@@ -609,78 +661,56 @@ body {
     border-radius: 8px;
     text-align: center;
     display: inline-block;
-    /* Para garantir que o botão ocupe apenas o espaço necessário */
     margin: 10px auto;
-    /* Centraliza o botão horizontalmente */
     transition: background-color 0.3s, transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    /* Sombra suave */
 }
 
-/* Efeito de hover */
 .copiar-btn:hover {
     background-color: #3367d6;
-    /* Cor do botão ao passar o mouse */
     transform: scale(1.05);
-    /* Leve aumento no tamanho */
-    /* Remover o sublinhado ao passar o mouse */
     text-decoration: none;
-    /* Remover o sublinhado ao passar o mouse */
 }
 
-/* Quando o botão for clicado */
 .copiar-btn:active {
     background-color: #2c6bbf;
-    /* Cor mais escura quando clicado */
     transform: scale(0.98);
-    /* Efeito de pressionamento */
 }
 
-/* Quando a chave for copiada */
 .copiar-btn.copiado {
     background-color: #34a853;
-    /* Cor de sucesso (verde) */
     color: white;
     font-weight: bold;
 }
 
-/* Icone dentro do botão */
 .copiar-btn i {
     margin-right: 8px;
 }
 
-
-
 /* ============================= */
-/* MODAL PIX*/
+/* 9.1 MODAL PIX (VERSÃO ALTERNATIVA) */
 /* ============================= */
-/* Modal geral */
 #pixModal {
     display: none;
-    /* Inicialmente oculto */
     opacity: 0;
     visibility: hidden;
     transform: scale(0.8);
     transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
-/* Quando o modal estiver ativo, torna-se visível e com animação de abertura */
 #pixModal.ativo {
     display: block;
-    /* Torna visível */
     opacity: 1;
     visibility: visible;
     transform: scale(1);
 }
 
-/* ANIMAÇÃO DE SAÍDA - Diminui e desvanece */
 #pixModal.fechando {
     opacity: 0;
     visibility: hidden;
     transform: scale(0.8);
 }
 
-/* Caixa do conteúdo */
 .pix-modal-content {
     background-color: #2e2e2e;
     color: #ffffff;
@@ -696,14 +726,6 @@ body {
     animation: fadeInModal 0.4s ease forwards;
 }
 
-/* Animação de entrada */
-@keyframes fadeInModal {
-    to {
-        transform: scale(1);
-    }
-}
-
-/* Botão de fechar */
 .pix-close {
     position: absolute;
     top: 12px;
@@ -718,7 +740,6 @@ body {
     color: #fff;
 }
 
-/* QR Code */
 .pix-qr {
     width: 200px;
     height: auto;
@@ -726,7 +747,6 @@ body {
     border-radius: 6px;
 }
 
-/* Títulos e textos */
 .pix-modal-content h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -742,7 +762,6 @@ body {
     color: #ffffff;
 }
 
-/* Botão de copiar Pix */
 .copiar-btn {
     background: none;
     border: none;
@@ -753,12 +772,14 @@ body {
     transition: color 0.2s ease;
 }
 
-/* Efeito de hover no botão de copiar */
 .copiar-btn:hover {
     color: #ffffff;
     text-decoration: underline;
 }
 
+/* ============================= */
+/* 10. FILTRO "MAIS DESEJADOS" E "PRESENTES JÁ RECEBIDOS" */
+/* ============================= */
 #menuMaisDesejados.active {
     color: red;
 }
@@ -767,16 +788,6 @@ body {
     color: red;
 }
 
-/* Filtro "Mais Desejados" ativo – deixa o texto e o ícone em vermelho */
-#menuMaisDesejados.active {
-    color: red;
-}
-
-#menuMaisDesejados.active i {
-    color: red;
-}
-
-/* Filtro "Presentes Já Recebidos" ativo – deixa o texto e o ícone em verde */
 #menuPresentesRecebidos.active {
     color: #90ee90;
 }
@@ -785,13 +796,15 @@ body {
     color: #90ee90;
 }
 
+/* ============================= */
+/* 11. EFEITOS ESPECIAIS: "MAIS DESEJADOS" E "JÁ TEMOS" */
+/* ============================= */
 .item-card.card-nao-temos {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Efeito de destaque para "Mais desejados": borda/glow em tom vermelho */
+/* Glow vermelho p/ "Mais desejados" */
 .item-card.card-nao-temos:hover {
-    /* Usamos uma animação que inicia com um glow forte e depois se estabiliza */
     box-shadow: 0 4px 10px red;
 }
 
@@ -799,7 +812,342 @@ body {
     transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Efeito de destaque para "Já temos": borda/glow em tom verde claro */
+/* Glow verde p/ "Já temos" */
 .item-card.card-ja-temos:hover {
     box-shadow: 0 4px 10px #90ee90;
+}
+
+/* ============================= */
+/* 12. HAMBURGER MENU (TELAS MENORES) */
+/* ============================= */
+.hamburger-menu {
+    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.hamburger-menu:active {
+    transform: scale(0.9) rotate(-10deg);
+}
+
+.hamburger-menu i {
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.sidebar.open {
+    left: 0 !important;
+    transform: translateX(0);
+}
+
+/* ---------- Conteúdo de filtros mobile (12.1) ---------- */
+.filtros-conteudo {
+    display: none;
+}
+
+.filtros-conteudo.filtros-aberto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Botão "Filtros >>" (12.2) */
+.filtros-toggle {
+    background-color: #353535;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Por padrão, oculto no desktop */
+.filtros-mobile {
+    display: none;
+}
+
+/* ============================= */
+/* 13. BOTÃO FLUTUANTE "VOLTAR AO TOPO" */
+/* ============================= */
+.scroll-to-top {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    color: #fff;
+    display: flex;
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.5s, transform 0.5s;
+    z-index: 9999;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+
+    /* centraliza o ícone */
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-to-top.show {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+}
+
+.scroll-to-top i {
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    width: auto;
+    height: auto;
+    text-align: center;
+}
+
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, #59659c 0%, #424f77 100%);
+    transform: scale(1.1);
+}
+
+/* ============================= */
+/* 14. RODAPÉ                    */
+/* ============================= */
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    color: #f0f0f0;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 10px;
+    z-index: 999;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    transform: translateY(0);
+    opacity: 1;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.site-footer.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* ============================= */
+/* 15. RESPONSIVO (TELAS >= 769px)*/
+/* ============================= */
+@media (min-width: 769px) {
+    .filtros-conteudo {
+        display: flex;
+        gap: 10px;
+    }
+
+    .scroll-to-top {
+        padding: 16px 18px;
+        bottom: 80px;
+    }
+
+    .scroll-to-top i {
+        font-size: 1.6rem;
+    }
+}
+
+/* ============================= */
+/* 16. RESPONSIVO (TELAS <= 768px)*/
+/* ============================= */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        margin-top: 0;
+        padding-bottom: 60px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .hero-section {
+        padding-top: 60px;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .items-header {
+        flex-direction: column;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 9999;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 6px;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .hamburger-menu i {
+        font-size: 1.4rem;
+        color: #fff;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 100vh;
+        overflow-y: auto;
+        z-index: 9999;
+        background-color: #2b2b2b;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .sidebar.open~.sidebar-overlay {
+        display: block;
+    }
+
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 9998;
+        pointer-events: auto;
+    }
+
+    .hero-section {
+        min-height: 360px;
+        padding-top: 70px;
+        padding-bottom: 20px;
+    }
+
+    .hero-title {
+        font-size: 1.8rem;
+    }
+
+    .couple-names {
+        font-size: 2rem;
+    }
+
+    .countdown {
+        font-size: 1.1rem;
+    }
+
+    .filter-categories {
+        display: none;
+    }
+
+    .filtros-mobile {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .filtros-conteudo {
+        display: none;
+    }
+
+    .filtros-conteudo.filtros-aberto {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Botão de scroll top (16.1) */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        padding: 10px 14px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 9999;
+        display: none;
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+    .scroll-to-top:hover {
+        background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+        transform: scale(1.05);
+    }
+
+    .scroll-to-top i {
+        font-size: 1.2rem;
+    }
+
+    /* Rodapé fixo no mobile (16.2) */
+    .site-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #0B1736;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        z-index: 999;
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================= */
+/* 17. RESPONSIVO (TELAS <= 480px)*/
+/* ============================= */
+@media (max-width: 480px) {
+    .hero-section {
+        height: 220px;
+    }
+
+    .hero-icon {
+        width: 1.6rem;
+    }
+
+    .hero-title {
+        font-size: 1.6rem;
+    }
+
+    .couple-names {
+        font-size: 1.8rem;
+    }
+
+    .countdown {
+        font-size: 1rem;
+    }
+
+    .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sort-btn {
+        padding: 6px 8px;
+        font-size: 0.85rem;
+    }
 }

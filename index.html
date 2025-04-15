@@ -1,16 +1,28 @@
+<!-- ============================= -->
+<!-- 1. INÍCIO DO DOCUMENTO HTML   -->
+<!-- ============================= -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+    <!-- ============================= -->
+    <!-- 2. METADADOS E IMPORTS        -->
+    <!-- ============================= -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Lista de Presentes</title>
-    <link rel="icon" href="../src/assets/images/gift.png" type="image/png">
+    <link rel="icon" href="../Lista de Presentes (Projeto)/src/assets/images/gift.png" type="image/png">
 
     <!-- ícones do Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <!-- CSS Reset e Estilos -->
     <link rel="stylesheet" href="src/css/reset.css">
     <link rel="stylesheet" href="src/css/style.css">
 
@@ -18,19 +30,43 @@
 
 <body>
 
-    <!-- Cabeçalho / Hero Section -->
+    <!-- ============================= -->
+    <!-- 3. CABEÇALHO / HERO SECTION   -->
+    <!-- ============================= -->
     <header class="hero-section">
-        <div class="hero-content">
-            <img src="src/assets/images/gift.png" alt="gift.png">
-            <h1 class="hero-title">Lista de Presentes</h1>
-        </div>
-    </header>
-    <!-- Fim do Cabeçalho -->
 
-    <!-- Container Principal -->
+        <!-- Botão de hamburger (visível em telas pequenas) -->
+        <div class="hamburger-menu" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <!-- Fim do Botão de hamburger -->
+
+        <!-- Overlay sutil (escurece a imagem de fundo) -->
+        <div class="hero-overlay"></div>
+
+        <!-- Conteúdo do cabeçalho -->
+        <div class="hero-content">
+            <div class="hero-top">
+                <img src="src/assets/images/gift.png" alt="gift.png" class="hero-icon">
+                <h1 class="hero-title">Lista de Presentes</h1>
+            </div>
+            <h2 class="couple-names">Anderson &amp; Laura</h2>
+            <div class="couple-decor">&#10084;&#65039;</div>
+            <div class="countdown-container">
+                <span id="countdown" class="countdown"></span>
+            </div>
+        </div>
+        <!-- Fim do conteúdo do cabeçalho -->
+
+    </header>
+    <!-- Fim do Cabeçalho / Hero Section -->
+
+    <!-- ============================= -->
+    <!-- 4. CONTAINER PRINCIPAL        -->
+    <!-- ============================= -->
     <div class="container">
 
-        <!-- Menu Lateral -->
+        <!-- 4.1 MENU LATERAL -->
         <aside class="sidebar">
 
             <!-- Início Menu -->
@@ -72,8 +108,7 @@
                 </button>
 
                 <!-- Lista de Categorias -->
-                <ul class="categories-list">
-                </ul>
+                <ul class="categories-list"></ul>
                 <!-- Fim da Lista de Categorias -->
 
             </div>
@@ -82,53 +117,46 @@
         </aside>
         <!-- Fim do Menu Lateral -->
 
-        <!-- Área principal do site -->
+        <!-- Overlay que aparece atrás do menu (no mobile) -->
+        <div class="sidebar-overlay" onclick="toggleSidebar(true)"></div>
+        <!-- Fim do Overlay -->
+
+        <!-- 4.2 ÁREA PRINCIPAL -->
         <main class="main-content">
 
-            <!-- Filtro de Categorias Topo -->
+            <!-- Filtro de Categorias (Topo) -->
             <section class="filter-categories">
-
                 <h2 class="filter-title">Categorias</h2>
-
                 <div class="categories-grid">
-
                     <div class="category-card active" data-category="todos">
                         <i class="fas fa-list"></i>
                         <span>Todos os Itens</span>
                     </div>
-
                     <div class="category-card" data-category="banheiro">
                         <i class="fas fa-toilet"></i>
                         <span>Banheiro</span>
                     </div>
-
                     <div class="category-card" data-category="cozinha">
                         <i class="fas fa-utensils"></i>
                         <span>Cozinha</span>
                     </div>
-
                     <div class="category-card" data-category="geral">
                         <i class="fas fa-boxes"></i>
                         <span>Geral</span>
                     </div>
-
                     <div class="category-card" data-category="lavanderia">
                         <i class="fas fa-soap"></i>
                         <span>Lavanderia</span>
                     </div>
-
                     <div class="category-card" data-category="quarto">
                         <i class="fas fa-bed"></i>
                         <span>Quarto</span>
                     </div>
-
                     <div class="category-card" data-category="sala">
                         <i class="fas fa-couch"></i>
                         <span>Sala</span>
                     </div>
-
                 </div>
-
             </section>
             <!-- Fim do Filtro de Categorias Topo -->
 
@@ -141,8 +169,13 @@
             <!-- Lista de Itens -->
             <section class="items-section">
 
-                <!-- Filtro -->
-                <div class="items-header">
+                <!-- Botão que expande/colapsa filtros (somente mobile) -->
+                <div class="filtros-mobile">
+                    <button class="filtros-toggle" onclick="toggleFiltros()">Filtros &raquo;</button>
+                </div>
+
+                <!-- Filtro (conteúdo que será escondido/exibido) -->
+                <div class="items-header filtros-conteudo">
                     <button class="sort-btn status-btn ja-temos-btn" data-status="ja-temos">Já Temos</button>
                     <button class="sort-btn status-btn nao-temos-btn" data-status="nao-temos">Não Temos</button>
                     <button class="sort-btn" data-sort="price-asc">Preço (Menor → Maior)</button>
@@ -150,9 +183,9 @@
                 </div>
                 <!-- Fim do Filtro -->
 
-                <!-- Lista de Items -->
+                <!-- Lista de Items carregados via JavaScript -->
                 <div class="items-grid" id="itemsGrid">
-                    <!-- Os itens serão carregados aqui via JavaScript -->
+                    <!-- Os itens serão inseridos aqui dinamicamente -->
                 </div>
                 <!-- Fim da lista de itens -->
 
@@ -160,12 +193,14 @@
             <!-- Fim da lista de itens -->
 
         </main>
-        <!-- Fim da Área principal do Site -->
+        <!-- Fim da Área principal -->
 
     </div>
     <!-- Fim do Container Principal -->
 
-    <!-- Modal do Pix -->
+    <!-- ============================= -->
+    <!-- 5. MODAL DO PIX               -->
+    <!-- ============================= -->
     <div id="pixModal" class="pix-modal">
         <div class="pix-modal-content" id="pixContent">
             <span class="pix-close" onclick="fecharPixModal()">&times;</span>
@@ -183,10 +218,41 @@
     </div>
     <!-- Fim do Modal do Pix -->
 
-    <!-- JS -->
+    <!-- ============================= -->
+    <!-- 6. IMPORTAÇÃO DE SCRIPTS JS   -->
+    <!-- ============================= -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="src/js/sheets.js"></script>
+
+    <!-- ============================= -->
+    <!-- 7. BOTÃO FLUTUANTE (TOP)      -->
+    <!-- ============================= -->
+    <div class="scroll-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- ============================= -->
+    <!-- 8. RODAPÉ FIXO                -->
+    <!-- ============================= -->
+    <footer class="site-footer">
+        © 2025 - Criado por Andy. Algumas imagens são ilustrativas
+        e os links redirecionam para sites de terceiros
+    </footer>
+    <!-- Fim do Rodapé -->
 
 </body>
 
 </html>
+
+<!-- ============================= -->
+<!-- 9. COMENTÁRIOS FINAIS        -->
+<!-- ============================= 
+    Este arquivo HTML é parte de um projeto de lista de presentes.
+    O código JavaScript e CSS são carregados externamente.
+    O conteúdo dinâmico é gerado via JavaScript, utilizando a biblioteca PapaParse
+    para manipulação de dados CSV.
+    O modal do Pix é implementado com JavaScript puro, permitindo copiar a chave Pix
+    para a área de transferência.
+    O layout é responsivo e adaptável a diferentes tamanhos de tela.
+    O design é moderno e utiliza ícones do Font Awesome para melhorar a experiência do usuário.
+-->
