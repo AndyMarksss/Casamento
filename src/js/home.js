@@ -23,3 +23,16 @@ function countdown() {
 };
 
 document.addEventListener('DOMContentLoaded', countdown);
+
+
+// Navegação mobile
+function toggleNav() {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('open');
+}
+// Fecha ao clicar em link no mobile
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        document.getElementById('navbar').classList.remove('open');
+    });
+});

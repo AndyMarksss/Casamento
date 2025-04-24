@@ -28,11 +28,18 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom,
-            rgba(0, 0, 0, .9) 0%,
-            rgba(0, 0, 0, .3) 60%,
+            rgba(0, 0, 0, .7) 0%,
+            rgba(0, 0, 0, .2) 60%,
             rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
     /* cliques passam pelo pseudo-elemento */
+}
+
+.nav-links,
+.nav-links li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Link principal do nav */
@@ -139,6 +146,92 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* ---------- 3.1 NAV ---------- */
+
+    /* exibe ícone sanduíche, empurra conteúdo p/ espaço-entre */
+    .hamburger-menu {
+        display: block;
+        /* deve existir no HTML */
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.6rem;
+        cursor: pointer;
+        z-index: 1100;
+        /* acima do painel */
+    }
+
+    .nav-menu {
+        padding: 0 20px;
+        justify-content: space-between;
+        /* ícone à esquerda  |  nada à direita */
+    }
+
+    /* painel lateral escondido fora da tela ESQUERDA */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        /* encosta no topo            */
+        left: 0;
+        /* referência de origem       */
+        width: 240px;
+        height: 100vh;
+        flex-direction: column;
+        gap: 24px;
+        padding: 100px 24px 24px;
+        background: rgba(12, 18, 38, .97);
+        backdrop-filter: blur(12px);
+
+        /* 🔹 esta linha faz o painel sair COMPLETAMENTE */
+        transform: translateX(-100%);
+
+        transition: transform .35s ease;
+        box-shadow: none;
+        /* remove sombra lateral      */
+    }
+
+    /* quando <nav class="nav-menu open">,
+         o JS adiciona .open e o painel volta para a tela           */
+    .nav-menu.open .nav-links {
+        transform: translateX(0);
+        box-shadow: 2px 0 8px rgba(0, 0, 0, .6);
+    }
+
+
+    /* links ocupam 100 % de largura no painel */
+    .nav-link {
+        width: 100%;
+        font-size: 1.05rem;
+    }
+
+    .hero-home {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin: 0;
+        /* tira o recuo de 10 em */
+        padding: 0 16px;
+    }
+
+    /* coloca cada span em sua própria linha */
+    .couple-names span {
+        font-size: 1.3em;
+        display: block;
+    }
+
+    /* opcional: deixa o & um pouquinho menor/maior  */
+    .couple-names .amp {
+        font-size: 0.9em;
+        /* ajuste como preferir */
+        margin: .15em 0;
     }
 }
 

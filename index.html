@@ -20,17 +20,32 @@
 <body>
 
     <!-- Barra de navegação fixa -->
-    <nav class="nav-menu">
-        <a class="nav-link" href="page/lista-presentes/gifts.html">
-            <i class="fas fa-gift"></i> Lista de Presentes
-        </a>
+    <nav class="nav-menu" id="navbar">
+        <!-- Ícone sanduíche (mobile) -->
+        <button class="hamburger-menu" onclick="toggleNav()" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Links de navegação -->
+        <ul class="nav-links">
+            <li>
+                <a class="nav-link" href="page/lista-presentes/gifts.html" aria-label="Lista de Presentes">
+                    <i class="fas fa-gift"></i> Lista de Presentes
+                </a>
+            </li>
+            <!-- futuros links -->
+        </ul>
     </nav>
 
     <!-- Seção de destaque -->
     <header class="hero-home">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="couple-names">Anderson &amp; Laura</h1>
+            <h1 class="couple-names">
+                <span class="first-name">Anderson</span>
+                <span class="amp">&amp;</span>
+                <span class="last-name">Laura</span>
+            </h1>
             <div class="couple-decor">&#10084;&#65039;</div>
             <h1>28 / 09 / 2025</h1>
             <span id="countdown" class="countdown"></span>
