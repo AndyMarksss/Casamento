@@ -1,6 +1,6 @@
 /* src/css/home.css */
 :root {
-    --hero-height: 100vh;
+    --hero-height: 80vh;
 }
 
 /* =========== NAV BAR ELEGANTE =========== */
@@ -33,6 +33,15 @@
             rgba(0, 0, 0, 0) 100%);
     pointer-events: none;
     /* cliques passam pelo pseudo-elemento */
+}
+
+.nav-links {
+    display: flex;
+    /* já estava, mas reforçamos            */
+    flex-direction: row;
+    /* lado a lado                          */
+    align-items: center;
+    gap: 32px;
 }
 
 .nav-links,
@@ -69,6 +78,10 @@
 /* Ícone um pouquinho maior */
 .nav-link i {
     font-size: 1.1rem;
+}
+
+.rifa {
+    display: none;
 }
 
 .hero-home {
@@ -149,6 +162,79 @@
     }
 }
 
+/* ==========================================================
+   Citação bíblica (abaixo do hero)
+   ==========================================================*/
+.bible-verse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 16px 30px;
+    text-align: center;
+}
+
+.bible-verse blockquote {
+    margin: 0;
+    max-width: 700px;
+    font-family: "Playfair Display", serif;
+    /* fonte elegante */
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #f5f5f5;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .45);
+}
+
+.bible-verse blockquote footer {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-style: normal;
+    letter-spacing: .5px;
+    color: #d0d0d0;
+}
+
+/* ==========================================================
+   Mensagem de boas-vindas
+   ==========================================================*/
+.welcome-message {
+
+    /* ou qualquer largura fixa que achar ideal */
+    width: 100%;
+    /* ocupa até 90 % da tela em larguras menores */
+    margin: 0px auto 64px;
+    /* auto nas laterais → centraliza */
+
+    /* caso use justify/align center, a div precisa ser flex */
+    display: flex;
+    flex-direction: column;
+    /* mantém título e parágrafo em coluna     */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* visual (já estava ok) 1f1f1f  081229 */
+    background: linear-gradient(90deg,
+            #1f1f1f 0%,
+            #1f1f1f 5%,
+            #0B1736 50%,
+            #1f1f1f 95%,
+            #1f1f1f 100%);
+    /* cantos arredondados em todos os lados   */
+    padding: 56px 0px;
+    /* sombra leve embaixo */
+}
+
+
+.welcome-message h2,
+.welcome-message p {
+    color: #f5f5f5;
+    /* garante contraste         */
+    /* layout */
+    max-width: 800px;
+}
+
+/* =========== RESPONSIVO =========== */
+
 @media (max-width: 768px) {
 
     /* ---------- 3.1 NAV ---------- */
@@ -182,6 +268,7 @@
         width: 240px;
         height: 100vh;
         flex-direction: column;
+        align-items: flex-start;
         gap: 24px;
         padding: 100px 24px 24px;
         background: rgba(12, 18, 38, .97);
@@ -233,14 +320,33 @@
         /* ajuste como preferir */
         margin: .15em 0;
     }
-}
 
-@media(max-width:480px) {
-    .hero-home .couple-names {
-        font-size: 2.4rem;
+    .bible-verse blockquote {
+        font-size: 1.2rem;
     }
 
-    .countdown {
-        font-size: 1.1rem;
+    .welcome-message {
+        padding: 32px 0px;
+        background: linear-gradient(90deg,
+                #081229 0%,
+                #0B1736 50%,
+                #081229 100%);
     }
-}
+
+    .welcome-message h2,
+    .welcome-message p {
+        color: #f5f5f5;
+        /* garante contraste         */
+        /* layout */
+        margin: 10px;
+    }
+
+    @media(max-width:480px) {
+        .hero-home .couple-names {
+            font-size: 2.4rem;
+        }
+
+        .countdown {
+            font-size: 1.1rem;
+        }
+    }
