@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anderson & Laura – Nosso Casamento</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="./src/assets/images/favicon-heart.png" type="image/png">
+
     <!-- Ícones e fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +24,11 @@
 
     <!-- Barra de navegação fixa -->
     <nav class="nav-menu" id="navbar">
+
+        <!-- Máscara semitransparente – escondida por padrão -->
+        <div id="menuOverlay" class="menu-overlay"></div>
+
+
         <!-- Ícone sanduíche (mobile) -->
         <button class="hamburger-menu" onclick="toggleNav()" aria-label="Abrir menu">
             <i class="fas fa-bars"></i>
@@ -42,8 +50,9 @@
             <!-- futuros links -->
         </ul>
     </nav>
+    <!-- Fim da barra de navegação -->
 
-    <!-- Seção de destaque -->
+    <!-- NOME DO CASAL E CONTADOR -->
     <header class="hero-home">
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -52,34 +61,172 @@
                 <span class="amp">&amp;</span>
                 <span class="last-name">Laura</span>
             </h1>
-            <div class="couple-decor">&#10084;&#65039;</div>
+            <div class="couple-decor">— &#10084;&#65039; —</div>
             <h1>28 / 09 / 2025</h1>
             <span id="countdown" class="countdown"></span>
         </div>
     </header>
+    <!-- Fim do nome e contador -->
 
     <!-- (Conteúdo entra aqui embaixo) -->
 
-    <!-- Citação bíblica -->
+    <!-- Citação bíblica 1-->
     <section class="bible-verse">
         <blockquote>
             <p>“O amor é paciente, o amor é bondoso. Não inveja, não se vangloria, não se orgulha.”</p>
-            <footer>-- 1 Coríntios 13:4</footer>
+            <footer>— 1 Coríntios 13:4</footer>
         </blockquote>
     </section>
+    <!-- Fim da citação 1 -->
 
     <!-- Mensagem de boas-vindas -->
     <section class="welcome-message">
         <h2>Seja muito bem-vindo(a)!</h2>
+        <div class="couple-decor">— &#10084;&#65039; —</div>
         <p>
-            Estamos transbordando de alegria em poder compartilhar cada detalhe desta fase
-            tão especial de nossas vidas com você. Explore o site, deixe seu carinho e
-            prepare-se para celebrar conosco esse grande dia!
+            É com imensa alegria que recebemos você neste espaço dedicado ao amor que nos une. Navegue pelos
+            detalhes desta fase tão especial, <s>deixe sua mensagem, marque sua presença,</s> dê uma passada em nossa lista de
+            presentes — sem compromisso algum, pois sua presença e carinho são o que mais nos alegra —
+            e prepare-se para celebrar conosco cada momento inesquecível deste grande dia. ❤️
         </p>
     </section>
+    <!-- Fim da mensagem de boas-vindas -->
 
+    <!-- Citação bíblica 2-->
+    <section class="bible-verse">
+        <blockquote>
+            <p>"Acima de tudo, revistam-se do amor, que é o elo perfeito."</p>
+            <footer>— Colossenses 3:14</footer>
+        </blockquote>
+    </section>
+    <!-- Fim da citação 2 -->
 
-    <footer class="home-footer">© 2025 – Anderson & Laura. Com carinho ♥</footer>
+    <!-- Nossa História -->
+    <section class="story">
+        <h2 class="story-title">Nossa História</h2>
+        <div class="couple-decor">— &#10084;&#65039; —</div>
+        <ul class="story-timeline">
+            <!-- Etapa 1 -->
+            <li>
+                <h3 class="step-title">Como nos conhecemos</h3>
+                <figure class="polaroid">
+                    <img src="src/assets/images/começo.jpg" alt="Primeira vista">
+                    <figcaption>2022</figcaption>
+                </figure>
+                <p>Nos conhecemos trabalho e ajudei ela com seu HD — já foi amor à primeira vista!</p>
+            </li>
+
+            <!-- Etapa 2 -->
+            <li>
+                <h3 class="step-title">Primeira Viagem</h3>
+                <figure class="polaroid">
+                    <img src="src/assets/images/viagem.jpg" alt="Primeira viagem">
+                    <figcaption>2022</figcaption>
+                </figure>
+                <p>Primeira viagem juntos: Praia, fomos passar o primeiro Natal juntos com a família dele</p>
+            </li>
+
+            <!-- Etapa 3 -->
+            <li>
+                <h3 class="step-title">O Pedido</h3>
+                <figure class="polaroid">
+                    <img src="src/assets/images/pedido.jpg" alt="Pedido de casamento">
+                    <figcaption>2024</figcaption>
+                </figure>
+                <p>O pedido aconteceu numa pista de Skate, aonde nós demos o nosso primeiro beijo, após uma maravilhosa
+                    viagem a Gramado — e ela disse sim! 💍</p>
+            </li>
+        </ul>
+    </section>
+    <!-- Fim da nossa história -->
+
+    <!-- Citação bíblica 3-->
+    <section class="bible-verse">
+        <blockquote>
+            <p>"E, assim, permanecem estes três: a fé, a esperança e o amor. O maior deles, porém, é o amor."</p>
+            <footer>— 1 Coríntios 13:13</footer>
+        </blockquote>
+    </section>
+    <!-- Fim da citação 3 -->
+
+    <!-- Cronograma do Grande Dia -->
+    <section class="schedule" id="schedule">
+        <h2 class="schedule-title">Cronograma do Grande Dia</h2>
+        <div class="couple-decor">— &#10084;&#65039; —</div>
+
+        <p class="schedule-subtitle">28 de setembro de 2025</p>
+
+        <ul class="schedule-list">
+            <li>
+                <span class="time">12 h 00</span>
+                <div class="event">
+                    <i class="fas fa-heart"></i>
+                    <p>Cerimônia intimista<br><small>celebração civil &amp; votos</small></p>
+                </div>
+            </li>
+
+            <!-- <li>
+                <span class="time">13 h&nbsp;00</span>
+                <div class="event">
+                    <i class="fas fa-camera-retro"></i>
+                    <p>Ensaio fotográfico<br><small>com o fotógrafo profissional</small></p>
+                </div>
+            </li> -->
+
+            <li>
+                <span class="time">14 h 00</span>
+                <div class="event">
+                    <i class="fa fa-champagne-glasses"></i>
+                    <p>Almoço &amp; brindes<br><small>menu especial do Chalézinho</small></p>
+                </div>
+            </li>
+
+            <li>
+                <span class="time">16 h 00</span>
+                <div class="event">
+                    <i class="fas fa-door-open"></i>
+                    <p>Encerramento<br><small>abraços &amp; despedidas</small></p>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <!-- Fim do cronograma -->
+
+    <!-- Local da Celebração -->
+    <section class="venue">
+        <h2 class="section-heading">Local:</h2>
+        <div class="couple-decor">— &#10084;&#65039; —</div>
+
+        <h3 class="venue-name">Era uma vez um Chalezinho</h3>
+
+        <p class="venue-address">
+            Rua Itapimirum, 11 — Morumbi, São Paulo - SP<br>
+            <span class="cep">05716-090</span>
+        </p>
+
+        <div class="map-wrap">
+            <iframe title="Mapa - Era uma vez um Chalézinho"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3655.2700357167473!2d-46.7386501140467!3d-23.63049852396696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce514f52eda387%3A0xcfe02ff3bff2b8c7!2sChalezinho%20Morumbi!5e0!3m2!1spt-BR!2sbr!4v1745633895197!5m2!1spt-BR!2sbr"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <!-- Fim do local da celebração -->
+
+    <!-- Citação bíblica 4-->
+    <section class="bible-verse verso-4">
+        <blockquote>
+            <p>"Entregue o seu caminho ao Senhor; confie nele, e ele agirá."</p>
+            <footer>— Salmos 37:5</footer>
+        </blockquote>
+    </section>
+    <!-- Fim da citação 4 -->
+
+    <!-- Rodapé -->
+    <!-- Oculto no CSS por display: none; -->
+    <footer class="home-footer">
+        © 2025 – Anderson & Laura. Com carinho ♥
+    </footer>
+    <!-- Fim do rodapé -->
 
     <!-- JavaScript -->
     <script src="src/js/home.js"></script>

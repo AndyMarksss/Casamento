@@ -1,4 +1,6 @@
-
+/* ============================= */
+/* 1. CONTAGEM REGRESSIVA */
+/* ============================= */
 function countdown() {
     const targetDate = new Date('2025-09-28T12:00:00');
     const el = document.getElementById('countdown');
@@ -25,14 +27,45 @@ function countdown() {
 document.addEventListener('DOMContentLoaded', countdown);
 
 
-// Navegação mobile
-function toggleNav() {
-    const nav = document.getElementById('navbar');
-    nav.classList.toggle('open');
+/* ============================= */
+/* 2. MENU MOBILE */
+/* ============================= */
+/* Referências únicas */
+const nav = document.getElementById('navbar');
+const hamburger = document.querySelector('.hamburger-menu');
+const overlay = document.getElementById('menuOverlay');   // ✔️
+
+/* Abre / fecha */
+function toggleNav(forceClose = false) {
+    if (!nav) return;
+
+    const willOpen = forceClose ? false : !nav.classList.contains('open');
+
+    nav.classList.toggle('open', willOpen);
+    overlay.classList.toggle('show', willOpen);          // ‼️
+    document.body.classList.toggle('no-scroll', willOpen); // ‼️
 }
-// Fecha ao clicar em link no mobile
-document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-        document.getElementById('navbar').classList.remove('open');
-    });
+
+/* fecha ao clicar em um link do menu */
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => toggleNav(true));
 });
+
+/* fecha ao clicar no overlay (escuro) */
+overlay.addEventListener('click', () => toggleNav(true));   // ‼️
+
+/* impede propagação no hambúrguer para não fechar logo após abrir */
+hamburger.addEventListener('click', e => e.stopPropagation());
+
+/* fecha se clicar fora do nav e fora do hambúrguer */
+document.addEventListener('click', e => {
+    if (!nav.classList.contains('open')) return;
+    if (nav.contains(e.target) || hamburger.contains(e.target)) return;
+    toggleNav(true);
+});
+
+
+
+/* ============================= */
+/* 3.  */
+/* ============================= */

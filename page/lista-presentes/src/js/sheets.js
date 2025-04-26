@@ -727,10 +727,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 /* ============================= */
-/* 15. FUNÇÃO: toggleSidebar(forceClose) E EVENTOS DO MENU */
+/* 15. MENU MOBILE */
 /* ============================= */
 function toggleSidebar(forceClose = false) {
     const sidebar = document.querySelector('.sidebar');
+
     if (!sidebar) return;
 
     if (forceClose) {
@@ -738,6 +739,8 @@ function toggleSidebar(forceClose = false) {
     } else {
         sidebar.classList.toggle('open');
     }
+    // document.body.classList.toggle('no-scroll', willOpen); // ‼️ 
+
 }
 
 // Fecha ao clicar em links do menu principal

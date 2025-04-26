@@ -3,7 +3,22 @@
     --hero-height: 80vh;
 }
 
-/* =========== NAV BAR ELEGANTE =========== */
+body {
+    margin: 0;
+    padding-bottom: 60px;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg,
+            rgba(31, 31, 31, 1) 0%,
+            rgba(31, 31, 31, 1) 100%);
+    color: #f5f5f5;
+    /* cor padrão do texto */
+    line-height: 1.5;
+}
+
+/* =============================  */
+/* 1. NAV BAR ELEGANTE */
+/* ============================= */
 
 /* Aumenta altura, espaçamento e adiciona sombra/desfoque de vidro  */
 .nav-menu {
@@ -37,9 +52,7 @@
 
 .nav-links {
     display: flex;
-    /* já estava, mas reforçamos            */
     flex-direction: row;
-    /* lado a lado                          */
     align-items: center;
     gap: 32px;
 }
@@ -83,6 +96,10 @@
 .rifa {
     display: none;
 }
+
+/* =============================  */
+/* 2. HERO SECTION */
+/* =============================  */
 
 .hero-home {
     position: relative;
@@ -139,6 +156,7 @@
 }
 
 .home-footer {
+    /* display: none; */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -150,21 +168,9 @@
     padding: 10px;
 }
 
-@keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ==========================================================
-   Citação bíblica (abaixo do hero)
-   ==========================================================*/
+/* ============================= */
+/* 3. CITAÇÃO BÍBLICA                                      */
+/* ============================= */
 .bible-verse {
     display: flex;
     justify-content: center;
@@ -191,17 +197,18 @@
     font-style: normal;
     letter-spacing: .5px;
     color: #d0d0d0;
+    padding-bottom: 25px;
 }
 
-/* ==========================================================
-   Mensagem de boas-vindas
-   ==========================================================*/
+/* ============================= */
+/* 4. MENSAGEM DE BOAS-VINDAS    */
+/* ============================= */
 .welcome-message {
 
     /* ou qualquer largura fixa que achar ideal */
     width: 100%;
     /* ocupa até 90 % da tela em larguras menores */
-    margin: 0px auto 64px;
+    margin: 0px auto 32px;
     /* auto nas laterais → centraliza */
 
     /* caso use justify/align center, a div precisa ser flex */
@@ -214,12 +221,11 @@
 
     /* visual (já estava ok) 1f1f1f  081229 */
     background: linear-gradient(90deg,
-            #1f1f1f 0%,
-            #1f1f1f 5%,
-            #0B1736 50%,
-            #1f1f1f 95%,
-            #1f1f1f 100%);
-    /* cantos arredondados em todos os lados   */
+            rgba(31, 31, 31, .5) 0%,
+            rgba(31, 31, 31, 1) 5%,
+            rgba(11, 23, 54, 1) 50%,
+            rgba(31, 31, 31, 1) 95%,
+            rgba(31, 31, 31, .5) 100%);
     padding: 56px 0px;
     /* sombra leve embaixo */
 }
@@ -230,14 +236,366 @@
     color: #f5f5f5;
     /* garante contraste         */
     /* layout */
-    max-width: 800px;
+    max-width: 810px;
 }
 
-/* =========== RESPONSIVO =========== */
+
+/* ============================= */
+/* 5. MENU HAMBURGUER */
+/* ============================= */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    /* opacidade do escurecimento       */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+    z-index: 900;
+    /* abaixo do menu (z-index:1000)    */
+}
+
+/* mostra a máscara */
+.menu-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+    /* captura cliques p/ fechar        */
+}
+
+/* trava a rolagem da página */
+body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+    /* evita pull-to-refresh em mobiles */
+}
+
+/* ============================= */
+/* 6. NOSSA HISTÓRIA             */
+/* ============================= */
+/* Polaroid */
+.polaroid {
+    position: relative;
+    width: 260px;
+    background: #fff;
+    padding: 12px 12px 46px;
+    /* espaço maior embaixo p/ legenda */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .35);
+    border-radius: 6px;
+    transform: rotate(-2deg);
+    /* leve inclinação divertida        */
+}
+
+.polaroid img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 3px;
+}
+
+.polaroid figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 12px;
+    font-weight: 700;
+    font-size: .95rem;
+    text-align: center;
+    color: #333;
+}
+
+.story {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    padding: 60px 0 60px;
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(255, 255, 255, .05) 0%,
+            rgba(255, 255, 255, 0) 60%) no-repeat,
+        linear-gradient(180deg,
+            #0B1736 0%,
+            #061129 100%);
+}
+
+.story .couple-decor {
+    margin-bottom: 35px;
+}
+
+/* — título principal centralizado — */
+.story-title {
+    text-align: center;
+    margin: 0 auto 26px;
+    font-size: 2.1rem;
+    color: #fdfdfd;
+    letter-spacing: .5px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+}
+
+/* — subtítulo (acima da polaroid) — */
+.step-title {
+    font-family: "Great Vibes", cursive;
+    font-size: 1.6rem;
+    color: #ffd1dc;
+    /* tom rosado que combina com & no hero */
+    margin: 0 0 12px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+}
+
+/* garante alinhamento central do bloco de cada etapa */
+.story-timeline li {
+    align-items: center;
+}
+
+/* --- novo layout: grade flexível --- */
+.story-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 96px 96px;
+    /* linhas e colunas                */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* removemos a linha vertical e os marcadores */
+.story-timeline::before,
+.story-timeline li::before {
+    display: none;
+}
+
+/* cada item agora é um bloco fixo e centralizado */
+.story-timeline li {
+    width: 260px;
+    /* mesmo tamanho da polaroid       */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #e9e9e9;
+    line-height: 1.45;
+}
+
+/* texto de apoio abaixo da foto */
+.story-timeline li p {
+    margin: 18px 0 0;
+}
+
+/* ============================= */
+/* 7. O GRANDED DIA             */
+/* ============================= */
+.schedule {
+    padding: 96px 16px 46px;
+    background: linear-gradient(180deg,
+            #061129 0%,
+            #0B1736 80%,
+            #0B1736 100%);
+    color: #f5f5f5;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.schedule::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    /* metade da altura do fade  */
+    height: 96px;
+    /* quanto maior, + suave     */
+    background: linear-gradient(180deg,
+            rgba(11, 23, 54, 0) 0%,
+            #0B1736 100%);
+    pointer-events: none;
+}
+
+.schedule-title {
+    font-size: 2rem;
+    margin-bottom: 64px 64px 0 64px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+}
+
+.schedule-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 32px;
+    color: #dfe8ff;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+}
+
+/* lista vertical (desktop vira duas colunas se couber) */
+.schedule-list {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 64px 56px;
+}
+
+.schedule-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* horário grande, estilo “flip-clock” */
+.schedule-list .time {
+    font-family: "Playfair Display", serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #90ee90;
+    letter-spacing: .5px;
+}
+
+/* bloco evento */
+.schedule-list .event {
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .15);
+    padding: 20px 18px;
+    border-radius: 12px;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
+    width: 100%;
+}
+
+.schedule-list .event i {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #ffd1dc;
+}
+
+.schedule-list .event p {
+    margin: 0;
+    line-height: 1.45;
+}
+
+.schedule-list .event small {
+    font-size: .85rem;
+    color: #d0d0d0;
+}
+
+
+/* MAPA */
+.venue {
+    padding: 56px 16px 120px;
+    margin-top: -48px;
+    background: linear-gradient(180deg,
+            #0B1736 0%,
+            #0B1736 80%,
+            #061129 100%);
+    text-align: center;
+    color: #f5f5f5;
+}
+
+.venue-title {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
+}
+
+.venue-address {
+    font-size: 1.1rem;
+    margin-bottom: 56px;
+    line-height: 1.45;
+    color: #dfe8ff;
+}
+
+/* Moldura do mapa */
+.map-wrap {
+    --grad: #2d3e75;
+    /* cor base da borda / glow   */
+
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+
+    border: none;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, .45);
+}
+
+/* debrum degradê sutil usando pseudo-elemento */
+.map-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    /* espessura da borda */
+    border-radius: inherit;
+    background: linear-gradient(135deg,
+            #384c9f 0%,
+            #5c6df5 50%,
+            #384c9f 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    /* recorta centro     */
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* mantém proporção 16:9 sem height fixo */
+.map-wrap iframe {
+    width: 100%;
+    height: 450px;
+    aspect-ratio: 16/9;
+    border: none;
+}
+
+.section-heading {
+    font-size: 2rem;
+    margin-bottom: 18px;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .55);
+}
+
+.venue-name {
+    font-family: "Great Vibes", cursive;
+    font-size: 2.2rem;
+    margin: 0 0 8px;
+    color: #ffd1dc;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+}
+
+.venue-address {
+    font-size: 1.1rem;
+    margin-bottom: 56px;
+    line-height: 1.45;
+    color: #dfe8ff;
+}
+
+.venue-address .cep {
+    font-size: .95rem;
+    color: #b7c5ff;
+}
+
+
+/* ============================= */
+/* KEYFRAMES                     */
+/* ============================= */
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =============================  */
+/* RESPONSIVO (TELAS <= 768px)   */
+/* ============================= */
 
 @media (max-width: 768px) {
-
-    /* ---------- 3.1 NAV ---------- */
 
     /* exibe ícone sanduíche, empurra conteúdo p/ espaço-entre */
     .hamburger-menu {
@@ -256,6 +614,8 @@
         padding: 0 20px;
         justify-content: space-between;
         /* ícone à esquerda  |  nada à direita */
+        backdrop-filter: blur(1px);
+        /* efeito “glass” */
     }
 
     /* painel lateral escondido fora da tela ESQUERDA */
@@ -273,6 +633,7 @@
         padding: 100px 24px 24px;
         background: rgba(12, 18, 38, .97);
         backdrop-filter: blur(12px);
+
 
         /* 🔹 esta linha faz o painel sair COMPLETAMENTE */
         transform: translateX(-100%);
@@ -341,12 +702,156 @@
         margin: 10px;
     }
 
-    @media(max-width:480px) {
-        .hero-home .couple-names {
-            font-size: 2.4rem;
-        }
-
-        .countdown {
-            font-size: 1.1rem;
-        }
+    .story-timeline li,
+    .story-timeline li:nth-child(even) {
+        width: 100%;
+        align-items: center;
+        /* centraliza                       */
+        text-align: center;
+        /* deixa espaço p/ linha vertical   */
     }
+
+    .story-timeline li p {
+        max-width: 480px;
+    }
+
+    .polaroid {
+        transform: none;
+        width: 100%;
+        max-width: 260px;
+    }
+
+    /* remove a inclinação se preferir  */
+    .story-timeline li::before {
+        top: calc(48px + 130px);
+    }
+
+    .story-timeline {
+        flex-direction: column;
+    }
+
+    .story-timeline li {
+        width: 90%;
+        max-width: 320px;
+    }
+
+    .step-title {
+        font-size: 1.4rem;
+    }
+
+    .story-title {
+        font-size: 1.8rem;
+    }
+
+    .schedule {
+        padding: 64px 12px 64px;
+        /* menos altura */
+    }
+
+    .schedule-title {
+        /* título menor */
+        font-size: 1.6rem;
+        margin-bottom: 48px;
+    }
+
+    .schedule-list {
+        gap: 40px;
+        /* cartões mais próximos */
+    }
+
+    .schedule-list li {
+        /* cartão inteiro */
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 255, 255, .08);
+        border-radius: 14px;
+        padding: 24px 18px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+        width: 100%;
+        max-width: 340px;
+        /* mantém leitura fácil */
+        margin-inline: auto;
+        /* centraliza */
+    }
+
+    .schedule-list .time {
+        /* horário destacado */
+        font-size: 1.5rem;
+        margin-bottom: 12px;
+        display: block;
+    }
+
+    .schedule-list .event {
+        /* remove 2ª caixa */
+        background: none;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .schedule-list .event p {
+        /* texto enxuto */
+        font-size: .95rem;
+        line-height: 1.4;
+    }
+
+    /* 2. Seção Local / Mapa */
+    .venue {
+        padding: 56px 12px 96px;
+        margin-top: -32px;
+        /* “encosta” no cronograma */
+    }
+
+    .section-heading {
+        /* “Local:” */
+        font-size: 1.6rem;
+        margin-bottom: 14px;
+    }
+
+    .venue-name {
+        /* nome do restaurante */
+        font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+
+    .venue-address {
+        /* endereço */
+        font-size: .95rem;
+        margin-bottom: 40px;
+    }
+
+    /* caixa do mapa ganha sombra delicada e borda sutil */
+    .map-wrap {
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+        overflow: hidden;
+    }
+
+    .map-wrap::before {
+        /* afina a “moldura” gradiente */
+        padding: 1px;
+        background: linear-gradient(135deg,
+                #4659b5 0%,
+                #6f79ff 50%,
+                #4659b5 100%);
+    }
+
+    .map-wrap iframe {
+        aspect-ratio: 1/1;
+        height: auto;
+        min-height: 280px;
+    }
+
+}
+
+/* =============================  */
+/* RESPONSIVO (TELAS <= 480px)   */
+/* ============================= */
+@media(max-width:480px) {
+    .hero-home .couple-names {
+        font-size: 2.4rem;
+    }
+
+    .countdown {
+        font-size: 1.1rem;
+    }
+}

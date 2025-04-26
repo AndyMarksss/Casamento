@@ -873,6 +873,13 @@ body {
     display: none;
 }
 
+/* Filtros abertos no mobile (12.3) */  
+/* body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+    /* evita pull-to-refresh em mobiles */
+/* } */ 
+
 /* ============================= */
 /* 13. BOTÃO FLUTUANTE "VOLTAR AO TOPO" */
 /* ============================= */
