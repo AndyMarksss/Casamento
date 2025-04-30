@@ -1,294 +1,239 @@
-/* src/css/home.css */
+/* ───────────────────────────────
+   0. VARIÁVEIS / RESET BÁSICO
+   ─────────────────────────────── */
 :root {
     --hero-height: 80vh;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     padding-bottom: 60px;
-    padding: 0;
+    /* espaço p/ rodapé fixo */
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg,
-            rgba(31, 31, 31, 1) 0%,
-            rgba(31, 31, 31, 1) 100%);
     color: #f5f5f5;
-    /* cor padrão do texto */
     line-height: 1.5;
+    background: linear-gradient(135deg, #1f1f1f 0%, #1f1f1f 100%);
 }
 
-/* =============================  */
-/* 1. NAV BAR ELEGANTE */
-/* ============================= */
+section {
+    border-radius: 15px;
+}
 
-/* Aumenta altura, espaçamento e adiciona sombra/desfoque de vidro  */
+/* remova se não quiser radius global */
+
+/* ───────────────────────────────
+      1. NAVBAR
+      ─────────────────────────────── */
 .nav-menu {
     position: fixed;
     inset: 0 0 auto 0;
-    /* top:0; left/right:0 */
     height: 88px;
-    /* era ~40-50px */
     padding: 0 48px;
-    /* espaço lateral maior */
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    z-index: 1000;
     backdrop-filter: blur(8px);
-    /* efeito “glass” */
+    z-index: 1000;
 }
 
-/* Gradiente preto → transparente (leve) */
 .nav-menu::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom,
-            rgba(0, 0, 0, .7) 0%,
-            rgba(0, 0, 0, .2) 60%,
-            rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, .2) 60%, transparent 100%);
     pointer-events: none;
-    /* cliques passam pelo pseudo-elemento */
 }
 
 .nav-links {
     display: flex;
-    flex-direction: row;
-    align-items: center;
     gap: 32px;
-}
-
-.nav-links,
-.nav-links li {
-    list-style: none;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
-/* Link principal do nav */
 .nav-link {
     position: relative;
     display: flex;
     align-items: center;
     gap: .55rem;
-    font-size: 1rem;
-    /* maior */
-    font-weight: 600;
-    letter-spacing: .4px;
+    padding: 12px;
+    font: 600 1rem/1 "Poppins", sans-serif;
     color: #fff;
     text-decoration: none;
-    padding: 12px;
     border-radius: 8px;
     transition: background .3s ease, transform .2s ease;
 }
 
-/* Hover com leve recuo de profundidade */
+.nav-link i {
+    font-size: 1.1rem;
+}
+
 .nav-link:hover {
     background: rgba(255, 255, 255, .15);
     color: #90ee90;
-    transition: .5s;
-}
-
-/* Ícone um pouquinho maior */
-.nav-link i {
-    font-size: 1.1rem;
 }
 
 .rifa {
     display: none;
 }
 
-/* =============================  */
-/* 2. HERO SECTION */
-/* =============================  */
+/* link futuro */
 
+/* ───────────────────────────────
+      2. HERO
+      ─────────────────────────────── */
 .hero-home {
     position: relative;
     height: var(--hero-height);
-    background: linear-gradient(rgba(12, 74, 142, .4), rgba(0, 0, 0, .7)),
-        url("../assets/images/20221217_180007.jpg") center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    text-align: center;
     color: #fff;
     overflow: hidden;
+    text-align: center;
     border-radius: 0 0 20px 20px;
-}
-
-.hero-home .couple-names {
-    font-family: "Great Vibes", cursive;
-    font-size: 3.2rem;
-    margin: 0 0 .25em;
-}
-
-.couple-decor {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #f0f0f0;
-    margin: 0 0 .5em;
-}
-
-.gift-link {
-    display: none;
+    background:
+        linear-gradient(rgba(12, 74, 142, .4), rgba(0, 0, 0, .7)),
+        url("../assets/images/20221217_180007.jpg") center/cover no-repeat;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, .4);
-    z-index: 0;
 }
 
 .hero-content {
     position: relative;
     z-index: 1;
-    display: block;
-    margin: 0 0 0 10em;
-    animation: fadeSlideIn .8s ease forwards;
+    margin-left: 10em;
+    animation: fadeInUp .8s ease;
+}
+
+.couple-names {
+    font-family: "Great Vibes", cursive;
+    font-size: 3.2rem;
+    margin: 0 0 .25em;
+}
+
+.couple-decor {
+    font-size: 1.5rem;
+    margin: 0 0 .5em;
 }
 
 .countdown {
+    display: inline-block;
+    padding: .4rem .8rem;
     font-size: 1.3rem;
     background: rgba(0, 0, 0, .35);
-    padding: .4rem .8rem;
     border-radius: 8px;
-    display: inline-block;
 }
 
-.home-footer {
-    /* display: none; */
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
-    color: #f0f0f0;
-    font-size: .9rem;
-    text-align: center;
-    padding: 10px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* ============================= */
-/* 3. CITAÇÃO BÍBLICA                                      */
-/* ============================= */
+/* ───────────────────────────────
+      3. CITAÇÕES BÍBLICAS
+      ─────────────────────────────── */
 .bible-verse {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 16px 30px;
     text-align: center;
+    padding: 0 16px 30px;
 }
 
 .bible-verse blockquote {
     margin: 0;
     max-width: 700px;
-    font-family: "Playfair Display", serif;
-    /* fonte elegante */
-    font-style: italic;
-    font-size: 1.4rem;
-    line-height: 1.5;
+    font: italic 1.4rem/1.5 "Playfair Display", serif;
     color: #f5f5f5;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .45);
 }
 
-.bible-verse blockquote footer {
+.bible-verse footer {
+    display: block;
     margin-top: 12px;
-    font-size: 0.9rem;
-    font-style: normal;
-    letter-spacing: .5px;
+    font-size: .9rem;
     color: #d0d0d0;
     padding-bottom: 25px;
 }
 
-/* ============================= */
-/* 4. MENSAGEM DE BOAS-VINDAS    */
-/* ============================= */
+/* ───────────────────────────────
+      4. BOAS-VINDAS
+      ─────────────────────────────── */
 .welcome-message {
-
-    /* ou qualquer largura fixa que achar ideal */
+    margin: 0 auto 32px;
     width: 100%;
-    /* ocupa até 90 % da tela em larguras menores */
-    margin: 0px auto 32px;
-    /* auto nas laterais → centraliza */
-
-    /* caso use justify/align center, a div precisa ser flex */
     display: flex;
     flex-direction: column;
-    /* mantém título e parágrafo em coluna     */
-    justify-content: center;
     align-items: center;
     text-align: center;
-
-    /* visual (já estava ok) 1f1f1f  081229 */
-    background: linear-gradient(90deg,
-            rgba(31, 31, 31, .5) 0%,
-            rgba(31, 31, 31, 1) 5%,
-            rgba(11, 23, 54, 1) 50%,
-            rgba(31, 31, 31, 1) 95%,
-            rgba(31, 31, 31, .5) 100%);
-    padding: 56px 0px;
-    /* sombra leve embaixo */
+    padding: 56px 0;
+    background: linear-gradient(90deg, rgba(31, 31, 31, .5) 0%, #1f1f1f 5%, #0b1736 50%, #1f1f1f 95%, rgba(31, 31, 31, .5) 100%);
 }
-
 
 .welcome-message h2,
 .welcome-message p {
-    color: #f5f5f5;
-    /* garante contraste         */
-    /* layout */
     max-width: 810px;
+    color: #f5f5f5;
 }
 
-
-/* ============================= */
-/* 5. MENU HAMBURGUER */
-/* ============================= */
+/* ───────────────────────────────
+      5. MÁSCARA NAV + SCROLL LOCK
+      ─────────────────────────────── */
 .menu-overlay {
     position: fixed;
     inset: 0;
-    /* opacidade do escurecimento       */
     opacity: 0;
     pointer-events: none;
     transition: opacity .35s ease;
     z-index: 900;
-    /* abaixo do menu (z-index:1000)    */
 }
 
-/* mostra a máscara */
 .menu-overlay.show {
     opacity: 1;
     pointer-events: auto;
-    /* captura cliques p/ fechar        */
 }
 
-/* trava a rolagem da página */
 body.no-scroll {
     overflow: hidden;
     touch-action: none;
-    /* evita pull-to-refresh em mobiles */
 }
 
-/* ============================= */
-/* 6. NOSSA HISTÓRIA             */
-/* ============================= */
-/* Polaroid */
+/* ───────────────────────────────
+      6. NOSSA HISTÓRIA (polaroids)
+      ─────────────────────────────── */
 .polaroid {
     position: relative;
     width: 260px;
-    background: #fff;
     padding: 12px 12px 46px;
-    /* espaço maior embaixo p/ legenda */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .35);
+    background: #fff;
     border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, .35);
     transform: rotate(-2deg);
-    /* leve inclinação divertida        */
 }
 
 .polaroid img {
     width: 100%;
-    height: auto;
-    display: block;
     border-radius: 3px;
+    display: block;
 }
 
 .polaroid figcaption {
@@ -296,145 +241,92 @@ body.no-scroll {
     left: 0;
     right: 0;
     bottom: 12px;
-    font-weight: 700;
-    font-size: .95rem;
-    text-align: center;
+    font: .95rem 700/1 "Poppins", sans-serif;
     color: #333;
+    text-align: center;
 }
 
 .story {
+    position: relative;
+    padding: 60px 0;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, .05) 0%, transparent 60%) no-repeat,
+        linear-gradient(180deg, #0b1736 0%, #061129 100%);
     text-align: center;
     margin-bottom: 60px;
-    position: relative;
-    padding: 60px 0 60px;
-    background:
-        radial-gradient(circle at 50% 0%,
-            rgba(255, 255, 255, .05) 0%,
-            rgba(255, 255, 255, 0) 60%) no-repeat,
-        linear-gradient(180deg,
-            #0B1736 0%,
-            #061129 100%);
 }
 
-.story .couple-decor {
-    margin-bottom: 35px;
-}
-
-/* — título principal centralizado — */
 .story-title {
-    text-align: center;
-    margin: 0 auto 26px;
-    font-size: 2.1rem;
+    font: 2.1rem "Poppins", sans-serif;
     color: #fdfdfd;
-    letter-spacing: .5px;
+    margin: 0 0 26px;
     text-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 }
 
-/* — subtítulo (acima da polaroid) — */
 .step-title {
-    font-family: "Great Vibes", cursive;
-    font-size: 1.6rem;
+    font: 1.6rem "Great Vibes", cursive;
     color: #ffd1dc;
-    /* tom rosado que combina com & no hero */
     margin: 0 0 12px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
 }
 
-/* garante alinhamento central do bloco de cada etapa */
-.story-timeline li {
-    align-items: center;
-}
-
-/* --- novo layout: grade flexível --- */
 .story-timeline {
     display: flex;
     flex-wrap: wrap;
-    gap: 96px 96px;
-    /* linhas e colunas                */
+    gap: 96px;
     justify-content: center;
-    align-items: center;
-    position: relative;
     max-width: 1100px;
     margin: 0 auto;
     padding: 0;
+    list-style: none;
 }
 
-/* removemos a linha vertical e os marcadores */
-.story-timeline::before,
-.story-timeline li::before {
-    display: none;
-}
-
-/* cada item agora é um bloco fixo e centralizado */
 .story-timeline li {
     width: 260px;
-    /* mesmo tamanho da polaroid       */
-    padding: 0;
-    margin: 0;
-    list-style: none;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     color: #e9e9e9;
     line-height: 1.45;
+    margin: 0;
 }
 
-/* texto de apoio abaixo da foto */
 .story-timeline li p {
     margin: 18px 0 0;
 }
 
-/* ============================= */
-/* 7. O GRANDED DIA             */
-/* ============================= */
+/* ───────────────────────────────
+      7. CRONOGRAMA
+      ─────────────────────────────── */
 .schedule {
     padding: 96px 16px 46px;
-    background: linear-gradient(180deg,
-            #061129 0%,
-            #0B1736 80%,
-            #0B1736 100%);
-    color: #f5f5f5;
     text-align: center;
-    margin-bottom: 0;
-}
-
-.schedule::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    /* metade da altura do fade  */
-    height: 96px;
-    /* quanto maior, + suave     */
-    background: linear-gradient(180deg,
-            rgba(11, 23, 54, 0) 0%,
-            #0B1736 100%);
-    pointer-events: none;
+    color: #f5f5f5;
+    background: linear-gradient(180deg, #061129 0%, #0b1736 80%, #0b1736 100%);
 }
 
 .schedule-title {
+    margin: 0 0 64px;
     font-size: 2rem;
-    margin-bottom: 64px 64px 0 64px;
     text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
 }
 
 .schedule-subtitle {
-    font-size: 1.2rem;
     margin-bottom: 32px;
+    font-size: 1.2rem;
     color: #dfe8ff;
     text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
 }
 
-/* lista vertical (desktop vira duas colunas se couber) */
 .schedule-list {
-    list-style: none;
     margin: 0 auto;
-    padding: 0;
     max-width: 900px;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 64px 56px;
+    list-style: none;
 }
 
 .schedule-list li {
@@ -444,24 +336,19 @@ body.no-scroll {
     gap: 12px;
 }
 
-/* horário grande, estilo “flip-clock” */
 .schedule-list .time {
-    font-family: "Playfair Display", serif;
-    font-size: 1.8rem;
-    font-weight: 700;
+    font: 700 1.8rem/1 "Playfair Display", serif;
     color: #90ee90;
-    letter-spacing: .5px;
 }
 
-/* bloco evento */
 .schedule-list .event {
-    background: rgba(255, 255, 255, .07);
-    border: 1px solid rgba(255, 255, 255, .15);
+    width: 100%;
     padding: 20px 18px;
     border-radius: 12px;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .15);
     backdrop-filter: blur(3px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-    width: 100%;
 }
 
 .schedule-list .event i {
@@ -480,73 +367,14 @@ body.no-scroll {
     color: #d0d0d0;
 }
 
-
-/* MAPA */
+/* ───────────────────────────────
+      8. LOCAL / MAPA
+      ─────────────────────────────── */
 .venue {
     padding: 56px 16px 120px;
-    margin-top: -48px;
-    background: linear-gradient(180deg,
-            #0B1736 0%,
-            #0B1736 80%,
-            #061129 100%);
     text-align: center;
     color: #f5f5f5;
-}
-
-.venue-title {
-    font-size: 2rem;
-    margin-bottom: 16px;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, .5);
-}
-
-.venue-address {
-    font-size: 1.1rem;
-    margin-bottom: 56px;
-    line-height: 1.45;
-    color: #dfe8ff;
-}
-
-/* Moldura do mapa */
-.map-wrap {
-    --grad: #2d3e75;
-    /* cor base da borda / glow   */
-
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 18px;
-    overflow: hidden;
-    position: relative;
-
-    border: none;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, .45);
-}
-
-/* debrum degradê sutil usando pseudo-elemento */
-.map-wrap::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    padding: 2px;
-    /* espessura da borda */
-    border-radius: inherit;
-    background: linear-gradient(135deg,
-            #384c9f 0%,
-            #5c6df5 50%,
-            #384c9f 100%);
-    -webkit-mask: linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    /* recorta centro     */
-    mask-composite: exclude;
-    pointer-events: none;
-}
-
-/* mantém proporção 16:9 sem height fixo */
-.map-wrap iframe {
-    width: 100%;
-    height: 450px;
-    aspect-ratio: 16/9;
-    border: none;
+    background: linear-gradient(180deg, #0b1736 0%, #0b1736 80%, #061129 100%);
 }
 
 .section-heading {
@@ -556,10 +384,9 @@ body.no-scroll {
 }
 
 .venue-name {
-    font-family: "Great Vibes", cursive;
-    font-size: 2.2rem;
-    margin: 0 0 8px;
+    font: 2.2rem "Great Vibes", cursive;
     color: #ffd1dc;
+    margin: 0 0 8px;
     text-shadow: 0 1px 4px rgba(0, 0, 0, .6);
 }
 
@@ -575,56 +402,465 @@ body.no-scroll {
     color: #b7c5ff;
 }
 
+.map-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 32px rgba(0, 0, 0, .45);
+}
 
-/* ============================= */
-/* KEYFRAMES                     */
-/* ============================= */
-@keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
+.map-wrap::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #384c9f 0%, #5c6df5 50%, #384c9f 100%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+.map-wrap iframe {
+    width: 100%;
+    aspect-ratio: 16/9;
+    border: 0;
+    height: 450px;
+}
+
+/* ───────────────────────────────
+      9. DICAS DE TRAJE
+      ─────────────────────────────── */
+.dress-code {
+    padding: 96px 16px;
+    text-align: center;
+    background: linear-gradient(180deg, #061129 0%, #0b1736 100%);
+}
+
+.dress-code .section-title {
+    font-size: 2rem;
+    margin: 0 0 6px;
+}
+
+.dress-code .section-sub {
+    opacity: .85;
+    margin: 0 0 48px;
+}
+
+.dress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 48px 56px;
+    max-width: 1000px;
+    margin: 0 auto 64px;
+}
+
+.dress-card {
+    position: relative;
+    padding: 28px 24px 32px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .18);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+
+.dress-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, .45);
+    border-color: rgba(255, 255, 255, .35);
+}
+
+.dress-card.ok {
+    background: rgba(40, 120, 70, .10);
+}
+
+.dress-card.ok h3 i {
+    color: #34c759;
+}
+
+.dress-card.avoid {
+    background: rgba(120, 40, 40, .10);
+}
+
+.dress-card.avoid h3 i {
+    color: #ff4c4c;
+}
+
+.dress-card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 1.15rem;
+    margin: 0 0 18px;
+}
+
+.dress-card ul {
+    margin: 0;
+    padding-left: 18px;
+    text-align: left;
+}
+
+.dress-card li {
+    margin-bottom: 8px;
+}
+
+.palette-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 28px;
+    font-size: 1.15rem;
+}
+
+.color-palette {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 60px;
+    justify-content: center;
+    margin: 0 auto 48px;
+    padding: 0;
+    list-style: none;
+}
+
+.color-palette li {
+    --s: 64px;
+    width: var(--s);
+    height: var(--s);
+    border-radius: 50%;
+    background: var(--clr);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+    position: relative;
+}
+
+.color-palette li span {
+    position: absolute;
+    left: 50%;
+    bottom: -26px;
+    transform: translateX(-50%);
+    font-size: .78rem;
+    white-space: nowrap;
+}
+
+.dress-note {
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: .9rem;
+    opacity: .85;
+}
+
+/* ───────────────────────────────
+      10. FORMULÁRIO DE MENSAGENS
+      ─────────────────────────────── */
+.guest-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 90px 16px 120px;
+    background: #061129;
+    text-align: center;
+    min-height: 680px;
+}
+
+.guest-message h2 {
+    font-size: 2rem;
+    margin: 0 0 36px;
+    letter-spacing: .5px;
+}
+
+.guest-form {
+    position: relative;
+    max-width: 460px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 38px 32px 46px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .12);
+    backdrop-filter: blur(8px) saturate(160%);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, .35);
+}
+
+.guest-form input,
+.guest-form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: .95rem;
+    color: #f1f1f1;
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 12px;
+    transition: border-color .25s, box-shadow .25s;
+}
+
+.guest-form textarea {
+    min-height: 120px;
+}
+
+.guest-form input:focus,
+.guest-form textarea:focus {
+    border-color: #ffd1dc;
+    outline: 0;
+    box-shadow: 0 0 0 3px rgba(255, 209, 220, .35);
+}
+
+.two-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.file-label,
+.file-name {
+    display: inline-flex;
+    align-items: center;
+    font-size: .9rem;
+}
+
+.file-label {
+    color: #ffd1dc;
+    gap: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.file-label:hover {
+    opacity: .8;
+}
+
+.file-name {
+    opacity: .6;
+}
+
+.consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: .85rem;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.consent input {
+    width: 18px;
+    height: 18px;
+    margin: 4px 0 0;
+    accent-color: #ffd1dc;
+}
+
+.send-btn {
+    position: relative;
+    overflow: hidden;
+    align-self: center;
+    padding: 12px 42px;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    background: #ffd1dc;
+    color: #0b1736;
+    font: 700 1rem/1 "Poppins", sans-serif;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.send-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+}
+
+.send-btn::before {
+    content: "\f004";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    color: #ff7aa8;
+    opacity: 0;
+    transform: scale(.4);
+    transition: opacity .35s ease, transform .35s ease;
+    pointer-events: none;
+}
+
+.send-btn:hover::before,
+.send-btn.play::before {
+    opacity: 1;
+    transform: scale(1.4);
+    animation: heart-beat .8s ease-out forwards;
+}
+
+.send-status {
+    min-height: 22px;
+    margin: 0;
+    font-size: .9rem;
+    color: #90ee90;
+}
+
+/* transição pós-envio */
+.form-content,
+.thank-you {
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.thank-you {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 32px;
+    text-align: center;
+    opacity: 0;
+    transform: scale(.9);
+    pointer-events: none;
+}
+
+.guest-form.sent .form-content {
+    opacity: 0;
+    transform: scale(.9) translateY(-20px);
+}
+
+.guest-form.sent .thank-you {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+/* 1) faz o wrapper interno funcionar como antes            */
+.guest-form .form-content {
+    display: flex;
+    /* empilha os campos verticalmente  */
+    flex-direction: column;
+    /* (equivale ao antigo layout)       */
+    gap: 20px;
+    /* mesmo “gap” que havia na .guest-form */
+}
+
+/* 2) garante que o cartão mantenha o padding externo
+      mesmo com a animação de esconder/mostrar               */
+.guest-form {
+    position: relative;
+    /* precisa p/ .thank-you ficar over­lay */
+    padding: 38px 32px 46px;
+    /* (reafirma) – caso tenha sido resetado */
+}
+
+.wall-btn {
+    margin-top: 24px;
+    padding: 12px 28px;
+    border-radius: 40px;
+    text-decoration: none;
+    background: #ffd1dc;
+    color: #0b1736;
+    font-weight: 600;
+}
+
+.wall-btn:hover {
+    filter: brightness(.9);
+}
+
+/* heart-beat */
+@keyframes heart-beat {
+    0% {
+        transform: scale(.6);
+        opacity: .9;
     }
 
-    to {
+    30% {
+        transform: scale(1.8);
         opacity: 1;
-        transform: translateY(0);
+    }
+
+    60% {
+        transform: scale(1.25);
+        opacity: .7;
+    }
+
+    100% {
+        transform: scale(1.4);
+        opacity: 0;
     }
 }
 
-/* =============================  */
-/* RESPONSIVO (TELAS <= 768px)   */
-/* ============================= */
+/* ───────────────────────────────
+   RODAPÉ FIXO
+   ─────────────────────────────── */
+.home-footer,
+.site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: .9rem;
+    text-align: center;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, .5);
+    z-index: 999;
+    /* acima de quase tudo   */
+    transition: transform .4s ease, opacity .4s ease;
+    /* efeito “deslizar”    */
+}
 
+/*  oculto quando quiser “sumir” durante scroll  */
+.home-footer.hide,
+.site-footer.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/*  Ajuste opcional para telas menores  */
+@media(max-width:480px) {
+
+    .home-footer,
+    .site-footer {
+        font-size: .85rem;
+        padding: 12px;
+    }
+}
+
+
+/* ───────────────────────────────
+      11. BREAKPOINTS
+      ─────────────────────────────── */
 @media (max-width: 768px) {
 
-    /* exibe ícone sanduíche, empurra conteúdo p/ espaço-entre */
+    /* Ícone do menu hambúrguer visível no mobile */
     .hamburger-menu {
         display: block;
-        /* deve existir no HTML */
         background: none;
         border: none;
         color: #fff;
         font-size: 1.6rem;
         cursor: pointer;
         z-index: 1100;
-        /* acima do painel */
     }
 
+    /* Barra de navegação ajustada: espaçamento e alinhamento */
     .nav-menu {
         padding: 0 20px;
         justify-content: space-between;
-        /* ícone à esquerda  |  nada à direita */
         backdrop-filter: blur(1px);
-        /* efeito “glass” */
     }
 
-    /* painel lateral escondido fora da tela ESQUERDA */
+    /* Menu lateral (nav-links) ocupando toda a altura da tela e escondido fora da tela por padrão */
     .nav-links {
         position: fixed;
         top: 0;
-        /* encosta no topo            */
         left: 0;
-        /* referência de origem       */
         width: 240px;
         height: 100vh;
         flex-direction: column;
@@ -633,30 +869,25 @@ body.no-scroll {
         padding: 100px 24px 24px;
         background: rgba(12, 18, 38, .97);
         backdrop-filter: blur(12px);
-
-
-        /* 🔹 esta linha faz o painel sair COMPLETAMENTE */
         transform: translateX(-100%);
-
+        /* mantém o menu fora da tela inicialmente */
         transition: transform .35s ease;
         box-shadow: none;
-        /* remove sombra lateral      */
     }
 
-    /* quando <nav class="nav-menu open">,
-         o JS adiciona .open e o painel volta para a tela           */
+    /* Menu lateral visível quando o nav possui a classe .open (aplicada via JS) */
     .nav-menu.open .nav-links {
         transform: translateX(0);
         box-shadow: 2px 0 8px rgba(0, 0, 0, .6);
     }
 
-
-    /* links ocupam 100 % de largura no painel */
+    /* Links de navegação ocupam largura total no menu lateral (fácil de tocar) */
     .nav-link {
         width: 100%;
         font-size: 1.05rem;
     }
 
+    /* Seção hero (cabeçalho com nome do casal e data) centralizada no mobile */
     .hero-home {
         justify-content: center;
         align-items: center;
@@ -665,188 +896,217 @@ body.no-scroll {
 
     .hero-content {
         margin: 0;
-        /* tira o recuo de 10 em */
         padding: 0 16px;
+        /* espaço lateral para não colar no viewport */
     }
 
-    /* coloca cada span em sua própria linha */
     .couple-names span {
-        font-size: 1.3em;
         display: block;
+        font-size: 1.3em;
+        /* cada nome em sua linha e tamanho levemente menor */
     }
 
-    /* opcional: deixa o & um pouquinho menor/maior  */
     .couple-names .amp {
         font-size: 0.9em;
-        /* ajuste como preferir */
         margin: .15em 0;
     }
 
+    /* Citações bíblicas com fonte um pouco menor para caber bem */
     .bible-verse blockquote {
         font-size: 1.2rem;
+        /* Podemos adicionar padding lateral se necessário */
     }
 
+    /* Mensagem de boas-vindas com padding lateral e cores preservadas */
     .welcome-message {
-        padding: 32px 0px;
-        background: linear-gradient(90deg,
-                #081229 0%,
-                #0B1736 50%,
-                #081229 100%);
+        padding: 32px 16px;
+        background: linear-gradient(90deg, #081229 0%, #0b1736 50%, #081229 100%);
     }
 
     .welcome-message h2,
     .welcome-message p {
         color: #f5f5f5;
-        /* garante contraste         */
-        /* layout */
         margin: 10px;
+    }
+
+    /* Nossa História – timeline em coluna, centralizada */
+    .story-timeline {
+        flex-direction: column;
+        /* empilha os itens verticalmente */
     }
 
     .story-timeline li,
     .story-timeline li:nth-child(even) {
         width: 100%;
         align-items: center;
-        /* centraliza                       */
         text-align: center;
-        /* deixa espaço p/ linha vertical   */
-    }
-
-    .story-timeline li p {
-        max-width: 480px;
-    }
-
-    .polaroid {
-        transform: none;
-        width: 100%;
-        max-width: 260px;
-    }
-
-    /* remove a inclinação se preferir  */
-    .story-timeline li::before {
-        top: calc(48px + 130px);
-    }
-
-    .story-timeline {
-        flex-direction: column;
     }
 
     .story-timeline li {
         width: 90%;
+        /* ocupa 90% da largura do container do pai */
         max-width: 320px;
+        /* largura máxima para não ficar muito grande */
+        margin: 0 auto;
+        /* centraliza o li dentro da seção */
+    }
+
+    .story-timeline li p {
+        max-width: 480px;
+        /* limite de largura para os textos, melhora leitura */
+    }
+
+    .polaroid {
+        width: 100%;
+        max-width: 260px;
+        /* limita tamanho da imagem */
+        transform: none;
+        /* remove qualquer rotação em mobile (se houver) */
+    }
+
+    .story-timeline li::before {
+        /* (opcional) ajustar posição da linha/elemento decorativo da timeline se necessário */
+        top: calc(48px + 130px);
     }
 
     .step-title {
         font-size: 1.4rem;
+        /* títulos das etapas um pouco menores */
     }
 
     .story-title {
         font-size: 1.8rem;
+        /* título "Nossa História" menor para caber */
     }
 
+    /* Cronograma do Grande Dia – ajustado para uma coluna e centralizado */
     .schedule {
         padding: 64px 12px 64px;
-        /* menos altura */
+        text-align: center;
     }
 
     .schedule-title {
-        /* título menor */
         font-size: 1.6rem;
         margin-bottom: 48px;
     }
 
     .schedule-list {
+        grid-template-columns: 1fr;
+        /* apenas uma coluna no mobile */
         gap: 40px;
-        /* cartões mais próximos */
+        /* espaçamento vertical entre os itens */
+        padding: 0 16px;
+        /* espaçamento lateral dentro da seção */
+        max-width: 100%;
+        /* garante que a grade não exceda a largura do contêiner */
+        margin: 0 auto;
     }
 
     .schedule-list li {
-        /* cartão inteiro */
+        /* Cada item do cronograma vira um “card” de largura limitada e centralizado */
         background: rgba(255, 255, 255, .04);
         border: 1px solid rgba(255, 255, 255, .08);
         border-radius: 14px;
-        padding: 24px 18px;
+        padding: 20px 14px;
         box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
         width: 100%;
         max-width: 340px;
-        /* mantém leitura fácil */
+        box-sizing: border-box;
         margin-inline: auto;
-        /* centraliza */
+        /* centraliza o card horizontalmente */
     }
 
     .schedule-list .time {
-        /* horário destacado */
         font-size: 1.5rem;
         margin-bottom: 12px;
         display: block;
     }
 
     .schedule-list .event {
-        /* remove 2ª caixa */
+        /* Remove o fundo e bordas internas do evento para usar só o card externo */
         background: none;
         border: none;
-        padding: 0;
         box-shadow: none;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px 14px;
+        /* mantém espaçamento interno igual ao card */
     }
 
     .schedule-list .event p {
-        /* texto enxuto */
         font-size: .95rem;
         line-height: 1.4;
     }
 
-    /* 2. Seção Local / Mapa */
+    /* Seção Local (Mapa) – ajustes de espaçamento e fontes */
     .venue {
         padding: 56px 12px 96px;
         margin-top: -32px;
-        /* “encosta” no cronograma */
+        /* sobrepõe levemente no cronograma para continuidade visual */
+        text-align: center;
     }
 
     .section-heading {
-        /* “Local:” */
         font-size: 1.6rem;
         margin-bottom: 14px;
     }
 
     .venue-name {
-        /* nome do restaurante */
         font-size: 1.8rem;
         margin-bottom: 6px;
     }
 
     .venue-address {
-        /* endereço */
         font-size: .95rem;
         margin-bottom: 40px;
     }
 
-    /* caixa do mapa ganha sombra delicada e borda sutil */
     .map-wrap {
         border-radius: 12px;
         box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
         overflow: hidden;
+        /* garante que o mapa não vaze para fora no mobile */
     }
 
     .map-wrap::before {
-        /* afina a “moldura” gradiente */
         padding: 1px;
-        background: linear-gradient(135deg,
-                #4659b5 0%,
-                #6f79ff 50%,
-                #4659b5 100%);
+        background: linear-gradient(135deg, #4659b5 0%, #6f79ff 50%, #4659b5 100%);
     }
 
     .map-wrap iframe {
         aspect-ratio: 1/1;
         height: auto;
         min-height: 280px;
+        width: 100%;
+        /* o mapa ocupa toda a largura disponível do container */
     }
 
+    /* Dicas de Traje – mantém cartões em uma coluna no mobile (via grid auto-fit) */
+    /* (Observação: o grid auto-fit já se adapta, mas poderíamos forçar uma coluna para telas bem pequenas se necessário) */
+    /* .dress-grid { grid-template-columns: 1fr; }   exemplo se quisermos apenas 1 coluna */
+    .dress-card {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, .28);
+    }
+
+    .dress-card:hover {
+        transform: none;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, .35);
+    }
+
+    .dress-card ul {
+        text-align: left;
+        /* listas dentro dos cartões de traje alinhadas à esquerda para leitura */
+    }
+
+    /* Formulário de mensagem – impede redimensionamento do textarea */
+    .guest-form textarea {
+        resize: none;
+    }
 }
 
-/* =============================  */
-/* RESPONSIVO (TELAS <= 480px)   */
-/* ============================= */
-@media(max-width:480px) {
+/* fecha @media */
+
+@media (max-width:480px) {
     .hero-home .couple-names {
         font-size: 2.4rem;
     }

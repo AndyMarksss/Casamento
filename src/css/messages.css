@@ -1,0 +1,137 @@
+/* ==========================
+   0. RESET BÁSICO / CORES
+   ==========================*/
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: #0B1736;
+    color: #000000;
+    text-align: center;
+    padding-top: 100px;
+    /* espaço para a navbar fixa   */
+}
+
+.mural-hero {
+    margin: 0 0 40px;
+    padding: 40px 16px 0;
+}
+
+.mural-title {
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: .5px;
+    color: #fff;
+}
+
+.couple-decor {
+    color: #fff;
+}
+
+/* Loader */
+.loader {
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-size: 1rem;
+    opacity: .9;
+}
+
+.loader i {
+    font-size: 2rem;
+    color: #ffd1dc;
+}
+
+/* ==========================
+     1. QUADRO DE POST-ITS
+     ==========================*/
+.postit-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 48px 32px;
+    padding: 0 32px 120px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.postit {
+    background: #fffb9d;
+    border: 1px solid #e7e293;
+    border-radius: 4px;
+    padding: 24px 20px 32px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, .35);
+    position: relative;
+    transform: rotate(calc(var(--r)*1deg));
+    animation: fadeIn .6s ease backwards;
+}
+
+.postit::before {
+    /* “durex” */
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: -14px;
+    width: 60px;
+    height: 28px;
+    background: rgba(255, 255, 255, .65);
+    transform: translateX(-50%) rotate(-3deg);
+    border-radius: 4px;
+}
+
+.postit h3 {
+    margin: 0 0 6px;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.postit small {
+    display: block;
+    margin-bottom: 10px;
+    font-size: .8rem;
+    color: #666;
+}
+
+.postit img {
+    width: 100%;
+    border-radius: 4px;
+    margin-top: 12px;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+
+/* Fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotate(calc(var(--r)*1deg))
+    }
+}
+
+/* ==========================
+     2. LIGHTBOX
+     ==========================*/
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease;
+}
+
+.lightbox.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 8px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .6);
+}
