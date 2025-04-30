@@ -51,7 +51,7 @@ if (nav) {
  * ============================================================= */
 const CLOUD_URL = 'https://api.cloudinary.com/v1_1/dz5bh3k5q/image/upload';
 const UP_PRESET = 'guestbook_photos';
-const API_URL = 'https://script.google.com/macros/s/AKfycbwOiTUlF72gJNh08lVzUGhftcAsqeIQKns6x0RI5WwLn-uXr1sL7VkFo2GHKfWCBghurw/exec';
+const API_URL = 'https://script.google.com/macros/s/AKfycbz24Z88LYoiO3fzjuHu9YN3GUqfbiW9_El0HtRGVushESLVv-2pg0wEqwax6A8_6qBBag/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = $('#msgForm'); if (!form) return;  // página sem form?

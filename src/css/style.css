@@ -606,6 +606,27 @@ body.no-scroll {
     min-height: 120px;
 }
 
+/* ───────── PLACEHOLDERS DOS CAMPOS DO FORM ───────── */
+.guest-form input::placeholder,
+.guest-form textarea::placeholder,
+.guest-form input::-webkit-input-placeholder,
+.guest-form textarea::-webkit-input-placeholder,
+.guest-form input::-moz-placeholder,
+.guest-form textarea::-moz-placeholder,
+.guest-form input:-ms-input-placeholder,
+.guest-form textarea:-ms-input-placeholder,
+.guest-form input::-ms-input-placeholder,
+.guest-form textarea::-ms-input-placeholder {
+    font-family: "Poppins", sans-serif;
+    /* mesma família do formulário */
+    font-size: .95rem;
+    /* opcional: igual ao dos inputs */
+    color: #9aa0b0;
+    /* mesma cor que usa nos outros */
+    font-weight: 400;
+    /* idem */
+}
+
 .guest-form input:focus,
 .guest-form textarea:focus {
     border-color: #ffd1dc;
