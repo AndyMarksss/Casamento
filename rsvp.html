@@ -4,21 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mural de Mensagens – Anderson & Laura 💌</title>
+    <title>RSVP – Anderson & Laura</title>
 
-    <!-- Favicon + ícones -->
-    <link rel="icon" href="../src/assets/images/favicon-heart.png" type="image/png">
+    <!-- Favicon -->
+    <link rel="icon" href="src/assets/images/favicon-heart.png" type="image/png">
+
+    <!-- Fontes e ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <!-- CSS principal do site + CSS só do mural -->
-    <link rel="stylesheet" href="./src/css/style.css">
-    <link rel="stylesheet" href="./src/css/nav-bar.css">
-    <link rel="stylesheet" href="./src/css/messages.css">
-    <link rel="stylesheet" href="./src/css/footer.css">
+    <!-- CSS compartilhado -->
+    <link rel="stylesheet" href="src/css/style.css">
+    <!-- CSS específico do menu -->
+    <link rel="stylesheet" href="src/css/nav-bar.css">
+    <!-- CSS específico RSVP -->
+    <link rel="stylesheet" href="src/css/rsvp.css">
+    <!-- CSS do footer fixo -->
+    <link rel="stylesheet" href="src/css/footer.css">
 </head>
 
 <body>
@@ -30,36 +34,35 @@
             <i class="fas fa-bars"></i>
         </button>
         <ul class="nav-links">
-            <li><a class="nav-link " href="index.html"><i class="fas fa-home"></i> Início</a></li>
-            <li><a class="nav-link active" href="messages.html"><i class="fas fa-envelope"></i> Mural de Mensagens</a>
+            <li><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li><a class="nav-link " href="messages.html"><i class="fas fa-envelope"></i> Mural de Mensagens</a>
             </li>
             <li><a class="nav-link" href="gifts.html"><i class="fas fa-gift"></i> Lista de Presentes</a></li>
-            <li><a class="nav-link" href="rsvp.html"><i class="fas fa-calendar-check"></i> RSVP</a></li>
+            <li><a class="nav-link active" href="rsvp.html"><i class="fas fa-calendar-check"></i> RSVP</a></li>
         </ul>
     </nav>
 
 
-    <!-- Título -->
-    <header class="mural-hero">
-        <h1 class="mural-title">Recadinhos para os Noivos</h1>
-        <div class="couple-decor">— 💌 —</div>
-    </header>
+    <!-- Conteúdo principal -->
+    <main class="rsvp-page">
+        <div class="main-content">
 
-    <!-- Loader -->
-    <div id="loader" class="loader" aria-hidden="true">
-        <i class="fas fa-heart fa-beat"></i>
-        Carregando mensagens…
-    </div>
+            <!-- início da an​imação de desenvolvimento -->
+            <div class="dev-animation">
+                <!-- engrenagem girando -->
+                <i class="fas fa-cog fa-spin dev-icon"></i>
+                <p>Em Desenvolvimento...</p>
 
-    <!-- Mural -->
-    <section id="board" class="postit-board" aria-live="polite"></section>
+                <!-- barra de progresso looping -->
+                <div class="progress-fancy">
+                    <div class="progress-bar-fancy"></div>
+                </div>
+            </div>
+            <!-- fim da animação -->
+        </div>
+    </main>
 
-    <!-- Lightbox (hidden por padrão) -->
-    <div id="lightbox" class="lightbox" aria-hidden="true">
-        <img src="" alt="">
-    </div>
 
-    <!-- Footer -->
     <!-- Footer principal -->
     <footer class="site-footer">
         <div class="site-footer__inner">
@@ -82,16 +85,14 @@
     </footer>
 
     <!-- Footer fixo inferior -->
-    <footer class="home-footer">
+    <!-- <footer class="home-footer">
         © 2025 – Anderson &amp; Laura. Com carinho ♥
-    </footer>
+    </footer> -->
 
-
-    <!-- JS -->
-    <script src="../src/js/messages.js" defer></script>
-    <script src="./src/js/nav.js" defer></script>
-    <script src="./src/js/footer.js" defer></script>
-
+    <!-- JS do menu -->
+    <script src="src/js/rsvp.js" defer></script>
+    <script src="src/js/nav.js" defer></script>
+    <script src="src/js/footer.js" defer></script>
 
 </body>
 

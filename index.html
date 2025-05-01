@@ -17,47 +17,29 @@
 
     <!-- Linkar CSS -->
     <link rel="stylesheet" href="src/css/style.css">
-    <link rel="stylesheet" href="page/lista-presentes/src/css/style.css">
+    <link rel="stylesheet" href="src/css/nav-bar.css">
+    <link rel="stylesheet" href="src/css/gift.css">
+    <link rel="stylesheet" href="src/css/footer.css">
 </head>
 
 <body>
 
+    <!-- Loader -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+
     <!-- Barra de navegação fixa -->
     <nav class="nav-menu" id="navbar">
-
-        <!-- Máscara semitransparente – escondida por padrão -->
-        <div id="menuOverlay" class="menu-overlay"></div>
-
-
-        <!-- Ícone sanduíche (mobile) -->
-        <button class="hamburger-menu" onclick="toggleNav()" aria-label="Abrir menu">
+        <button class="hamburger-menu" aria-label="Abrir menu">
             <i class="fas fa-bars"></i>
         </button>
-
-        <!-- Links de navegação -->
         <ul class="nav-links">
-            <li>
-                <!-- Rifa está com display:none no CSS -->
-                <a class="nav-link rifa" href="#" aria-label="Rifa">
-                    <i class="fa fa-ticket"></i> Rifa
-                </a>
-            </li>
-            <li>
-                <!-- Mural dee Mensagens -->
-                <a class="nav-link" href="messages.html" aria-label="Mural">
-                    <i class="fa fa-envelope"></i> Mural de Mensagens
-                </a>
-            </li>
-            <li>
-                <!-- Lista de Presentes -->
-                <a class="nav-link" href="page/lista-presentes/gifts.html" aria-label="Lista de Presentes">
-                    <i class="fas fa-gift"></i> Lista de Presentes
-                </a>
-            </li>
-            
-            <!-- futuros links -->
+            <li><a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Início</a></li>
+            <li><a class="nav-link" href="messages.html"><i class="fas fa-envelope"></i> Mural de Mensagens</a></li>
+            <li><a class="nav-link" href="gifts.html"><i class="fas fa-gift"></i> Lista de Presentes</a></li>
+            <li><a class="nav-link" href="rsvp.html"><i class="fas fa-calendar-check"></i> RSVP</a></li>
         </ul>
     </nav>
+
     <!-- Fim da barra de navegação -->
 
     <!-- NOME DO CASAL E CONTADOR -->
@@ -93,7 +75,7 @@
         <div class="couple-decor">— &#10084;&#65039; —</div>
         <p>
             É com imensa alegria que recebemos você neste espaço dedicado ao amor que nos une. Navegue pelos
-            detalhes desta fase tão especial, <s>deixe sua mensagem, marque sua presença,</s> dê uma passada em nossa
+            detalhes desta fase tão especial, deixe sua mensagem, <s>marque sua presença,</s> dê uma passada em nossa
             lista de
             presentes — sem compromisso algum, pois sua presença e carinho são o que mais nos alegra —
             e prepare-se para celebrar conosco cada momento inesquecível deste grande dia. ❤️
@@ -111,7 +93,7 @@
     <!-- Fim da citação 2 -->
 
     <!-- Nossa História -->
-    <section class="story">
+    <section class="story" id="story">
         <h2 class="story-title">Nossa História</h2>
         <div class="couple-decor">— &#10084;&#65039; —</div>
         <ul class="story-timeline">
@@ -202,7 +184,7 @@
     <!-- Fim do cronograma -->
 
     <!-- Local da Celebração -->
-    <section class="venue">
+    <section class="venue" id="venue">
         <h2 class="section-heading">Local:</h2>
         <div class="couple-decor">— &#10084;&#65039; —</div>
         <h3 class="venue-name">Era uma vez um Chalezinho</h3>
@@ -264,7 +246,7 @@
 
         <!-- PALETA DE CORES SUGERIDAS -->
         <h3 class="palette-title">
-            <i class="fas fa-palette"></i> 5 cores ideais para o ambiente do Chalézinho
+            <i class="fas fa-palette"></i> 5 cores ideais para o ambiente
         </h3>
 
         <ul class="color-palette list">
@@ -347,15 +329,79 @@
     </section>
     <!-- Fim das mensagens -->
 
+    <!-- Citação bíblica 6 -->
+    <section class="bible-verse">
+        <blockquote>
+            <p>"Amemos uns aos outros, pois o amor procede de Deus."</p>
+            <footer>— 1 João 4:7</footer>
+        </blockquote>
+    </section>
+    <!-- Fim da citação 6 -->
+
+    <!-- Prévia Lista de Presentes -->
+    <section id="featured-cta" class="gifts-cta">
+        <h2>Presentes</h2>
+        <div class="couple-decor">— &#10084;&#65039; —</div>
+
+        <p>Veja a nossa lista de presentes!</p>
+
+        <!-- aqui o JS vai injetar 5 cards aleatórios marcados “SIM” -->
+        <div id="homeItemsGrid" class="items-grid"></div>
+
+        <a href="gifts.html" class="btn gifts-btn">Ver Lista Completa</a>
+    </section>
+    <!-- Fim da prévia lista de presentes -->
+
+    <!-- Citação bíblica 7 -->
+    <section class="bible-verse">
+        <blockquote>
+            <p>"Nós amamos porque Ele nos amou primeiro."</p>
+            <footer>— 1 João 4:19</footer>
+        </blockquote>
+    </section>
+    <!-- Fim da citação 7 -->
+
     <!-- Rodapé -->
-    <!-- Oculto no CSS por display: none; -->
-    <footer class="home-footer">
-        © 2025 – Anderson & Laura. Com carinho ♥
+    <!-- Footer principal -->
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <h2 class="site-footer__title">Anderson &amp; Laura</h2>
+            <div class="couple-decor">— ❤️ —</div>
+            <p class="site-footer__date">
+                📅 28 de setembro de 2025 • 📍 Chalezinho Morumbi, São Paulo
+            </p>
+            <nav class="site-footer__nav">
+                <a href="#story">História</a>
+                <span class="sep">|</span>
+                <a href="#schedule">Cronograma</a>
+                <span class="sep">|</span>
+                <a href="#venue">Local</a>
+                <span class="sep">|</span>
+                <a href="#dress-code">Traje</a>
+                <span class="sep">|</span>
+                <a href="messages.html#guest-msg">Mural</a>
+                <span class="sep">|</span>
+                <a href="gifts.html">Presentes</a>
+                <span class="sep">|</span>
+                <a href="rsvp.html">RSVP</a>
+            </nav>
+            <p class="site-footer__note">Site desenvolvido com carinho por Andy</p>
+        </div>
     </footer>
-    <!-- Fim do rodapé -->
+
+    <!-- Footer fixo inferior -->
+    <footer class="home-footer">
+        © 2025 – Anderson &amp; Laura. Com carinho ♥
+    </footer>
+
 
     <!-- JavaScript -->
     <script src="src/js/home.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="src/js/sheets.js" defer></script>
+    <script src="src/js/nav.js" defer></script>
+    <script src="src/js/footer.js" defer></script>
+
 </body>
 
 </html>

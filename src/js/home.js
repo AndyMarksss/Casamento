@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', countdown);
 /* ============================= *
  * 2.  MENU  MOBILE              *
  * ============================= */
+/* 
 const nav = $('#navbar'), burger = $('.hamburger-menu'), overlay = $('#menuOverlay');
 if (nav) {
     const toggleNav = (forceClose = false) => {
@@ -44,7 +45,7 @@ if (nav) {
         if (nav.contains(e.target) || burger.contains(e.target)) return;
         toggleNav(true);
     });
-}
+} */
 
 /* ============================================================= *
  * 3.  FORMULÁRIO DE MENSAGENS  |  Cloudinary  +  Google Sheets   *

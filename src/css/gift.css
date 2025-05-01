@@ -11,16 +11,18 @@ body {
     margin: 0;
     color: #fff;
     background-color: #1f1f1f;
+    padding-bottom: 40px;
 }
 
 /* ============================= */
 /* 2. HERO SECTION               */
 /* ============================= */
 .hero-section {
+    padding-top: 70px;
     position: relative;
-    height: 300px;
+    height: 370px;
     background: linear-gradient(rgba(12, 74, 142, 0.5), rgba(0, 0, 0, 0.7)),
-        url("../assets/images/presentes.png") center/cover no-repeat;
+        url("../assets/images/back.png") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,7 +30,6 @@ body {
     overflow: hidden;
 }
 
-/* ---------- Overlay sutil sobre a imagem (2.1) ---------- */
 .hero-overlay {
     position: absolute;
     top: 0;
@@ -50,7 +51,6 @@ body {
     animation: fadeSlideIn 0.8s forwards ease;
 }
 
-/* ---------- Animação de entrada (2.2) ---------- */
 @keyframes fadeSlideIn {
     to {
         opacity: 1;
@@ -66,13 +66,11 @@ body {
     margin-bottom: 1rem;
 }
 
-/* ---------- Ícone (presente) (2.3) ---------- */
 .hero-icon {
     width: 2rem;
     height: auto;
 }
 
-/* ---------- Título principal (2.4) ---------- */
 .hero-title {
     font-size: 2rem;
     margin: 0;
@@ -81,7 +79,6 @@ body {
     font-weight: 700;
 }
 
-/* ---------- Nome do casal cursivo (2.5) ---------- */
 .couple-names {
     font-family: "Great Vibes", cursive;
     font-size: 2.4rem;
@@ -90,13 +87,11 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* ---------- Decoração / enfeite (2.6) ---------- */
 .couple-decor {
     font-size: 1.2rem;
     color: #ffd1dc;
 }
 
-/* ---------- Contagem regressiva (2.7) ---------- */
 .countdown-container {
     background: rgba(0, 0, 0, 0.3);
     padding: 0.5rem 1rem;
@@ -115,25 +110,23 @@ body {
 /* ============================= */
 .container {
     display: flex;
-    padding-bottom: 60px;
-    /* reserva espaço p/ rodapé fixo */
+    padding-bottom: 5px;
     width: 100%;
     min-height: calc(100vh - 200px);
     background-color: #2b2b2b;
 }
 
-/* ---------- Sidebar (desktop normal) (3.1) ---------- */
+/* ---------- Sidebar (desktop) ---------- */
 .sidebar {
     position: sticky;
-    top: 0;
+    top: 80px;
     left: 0;
     width: 250px;
-    max-height: 100vh;
+    max-height: calc(100vh - 88px);
     overflow-y: auto;
     background-color: #2b2b2b;
     padding: 20px;
     box-sizing: border-box;
-    /* sem transform no desktop */
 }
 
 /* ============================= */
@@ -164,7 +157,6 @@ body {
     color: #fff;
 }
 
-/* ---------- Link ativo no menu lateral (4.1) ---------- */
 .menu a.active {
     color: #ffffff;
     font-weight: bold;
@@ -189,7 +181,6 @@ body {
     cursor: default;
 }
 
-/* ---------- Categoria principal ---------- */
 .sidebar-category {
     margin-bottom: 8px;
 }
@@ -210,7 +201,6 @@ body {
     background-color: #3a3a3a;
 }
 
-/* Categoria expandida/ativa (5.1) */
 .sidebar-category.active>a,
 .sidebar-category.expanded>a {
     background-color: #4285f4;
@@ -218,7 +208,6 @@ body {
     font-weight: bold;
 }
 
-/* Ícone de toggle */
 .sidebar-category .toggle-icon {
     transition: transform 0.3s ease;
 }
@@ -227,7 +216,6 @@ body {
     transform: rotate(90deg);
 }
 
-/* ---------- Subcategorias ---------- */
 .subcategoria-list {
     margin-left: 16px;
     list-style: none;
@@ -237,7 +225,6 @@ body {
     transition: max-height 0.3s ease, padding 0.3s ease;
 }
 
-/* Quando expandida */
 .sidebar-category.expanded .subcategoria-list {
     max-height: 500px;
     padding-top: 8px;
@@ -273,9 +260,10 @@ body {
     flex: 1;
     padding: 20px;
     background-color: #1f1f1f;
+    border-radius: 15px;
 }
 
-/* ---------- Filtro de categorias (6.1) ---------- */
+/* ---------- Filtro de categorias (topo) ---------- */
 .filter-categories {
     background-color: #2b2b2b;
     padding: 20px;
@@ -369,7 +357,6 @@ body {
     margin-top: 20px;
 }
 
-/* ---------- Botões de filtro e ordenação ---------- */
 .items-header {
     display: flex;
     flex-wrap: wrap;
@@ -395,7 +382,6 @@ body {
     color: #fff;
 }
 
-/* Filtros ativos (8.1) */
 .sort-btn.active[data-status="ja-temos"] {
     background-color: #27ae60;
     color: white;
@@ -406,7 +392,6 @@ body {
     color: white;
 }
 
-/* ---------- Grid de itens ---------- */
 .items-grid {
     display: grid;
     grid-gap: 20px;
@@ -414,7 +399,6 @@ body {
     align-items: stretch;
 }
 
-/* Cards de item (8.2) */
 .item-card {
     background-color: #2b2b2b;
     border-radius: 8px;
@@ -433,7 +417,6 @@ body {
     box-shadow: 0 4px 10px #c0392b;
 }
 
-/* ---------- Animações de entrada (8.3) ---------- */
 @keyframes fadeIn {
     to {
         opacity: 1;
@@ -481,7 +464,6 @@ body {
     align-items: center;
 }
 
-/* ---------- Status (8.4) ---------- */
 .status {
     align-self: flex-start;
     padding: 4px 10px;
@@ -518,7 +500,6 @@ body {
     font-weight: bold;
 }
 
-/* ---------- Link do item (rodapé do card) ---------- */
 .item-link {
     margin-top: auto;
     display: inline-block;
@@ -591,7 +572,6 @@ body {
     visibility: visible;
 }
 
-/* ---------- Caixa do conteúdo (9.1) ---------- */
 .pix-modal-content {
     background-color: #2e2e2e;
     color: #ffffff;
@@ -607,7 +587,6 @@ body {
     animation: fadeInModal 0.4s ease forwards;
 }
 
-/* ---------- Animação de entrada (9.2) ---------- */
 @keyframes fadeInModal {
     to {
         transform: scale(1);
@@ -650,7 +629,6 @@ body {
     color: #ffffff;
 }
 
-/* ---------- Botão de copiar chave Pix (9.3) ---------- */
 .copiar-btn {
     background-color: #4285f4;
     border: none;
@@ -688,139 +666,9 @@ body {
 }
 
 /* ============================= */
-/* 9.1 MODAL PIX (VERSÃO ALTERNATIVA) */
+/* 11. HAMBURGER MENU (sidebar)  */
 /* ============================= */
-#pixModal {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-}
-
-#pixModal.ativo {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-}
-
-#pixModal.fechando {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8);
-}
-
-.pix-modal-content {
-    background-color: #2e2e2e;
-    color: #ffffff;
-    border-radius: 12px;
-    padding: 30px 20px;
-    width: 90%;
-    max-width: 400px;
-    margin: 10% auto;
-    position: relative;
-    text-align: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    transform: scale(0.9);
-    animation: fadeInModal 0.4s ease forwards;
-}
-
-.pix-close {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.2s ease;
-}
-
-.pix-close:hover {
-    color: #fff;
-}
-
-.pix-qr {
-    width: 200px;
-    height: auto;
-    margin-top: 20px;
-    border-radius: 6px;
-}
-
-.pix-modal-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #7dd3fc;
-}
-
-.pix-modal-content p {
-    margin: 6px 0;
-    font-size: 1rem;
-}
-
-.pix-modal-content strong {
-    color: #ffffff;
-}
-
-.copiar-btn {
-    background: none;
-    border: none;
-    color: #7dd3fc;
-    cursor: pointer;
-    font-size: 1rem;
-    margin-left: 10px;
-    transition: color 0.2s ease;
-}
-
-.copiar-btn:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-/* ============================= */
-/* 10. FILTRO "MAIS DESEJADOS" E "PRESENTES JÁ RECEBIDOS" */
-/* ============================= */
-#menuMaisDesejados.active {
-    color: red;
-}
-
-#menuMaisDesejados.active i {
-    color: red;
-}
-
-#menuPresentesRecebidos.active {
-    color: #90ee90;
-}
-
-#menuPresentesRecebidos.active i {
-    color: #90ee90;
-}
-
-/* ============================= */
-/* 11. EFEITOS ESPECIAIS: "MAIS DESEJADOS" E "JÁ TEMOS" */
-/* ============================= */
-.item-card.card-nao-temos {
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Glow vermelho p/ "Mais desejados" */
-.item-card.card-nao-temos:hover {
-    box-shadow: 0 4px 10px red;
-}
-
-.item-card.item-card.card-ja-temos {
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-/* Glow verde p/ "Já temos" */
-.item-card.card-ja-temos:hover {
-    box-shadow: 0 4px 10px #90ee90;
-}
-
-/* ============================= */
-/* 12. HAMBURGER MENU (TELAS MENORES) */
-/* ============================= */
-.hamburger-menu {
+.sidebar-toggle {
     display: none;
     position: absolute;
     top: 20px;
@@ -833,21 +681,19 @@ body {
     transition: .5s;
 }
 
-.hamburger-menu:active {
+.sidebar-toggle:active {
     transform: scale(0.9) rotate(-10deg);
 }
 
-.hamburger-menu i {
+.sidebar-toggle i {
     font-size: 1.4rem;
     color: #fff;
 }
 
 .sidebar.open {
-    left: 0 !important;
     transform: translateX(0);
 }
 
-/* ---------- Conteúdo de filtros mobile (12.1) ---------- */
 .filtros-conteudo {
     display: none;
 }
@@ -858,7 +704,6 @@ body {
     gap: 10px;
 }
 
-/* Botão "Filtros >>" (12.2) */
 .filtros-toggle {
     background-color: #353535;
     color: #fff;
@@ -868,20 +713,12 @@ body {
     cursor: pointer;
 }
 
-/* Por padrão, oculto no desktop */
 .filtros-mobile {
     display: none;
 }
 
-/* Filtros abertos no mobile (12.3) */  
-/* body.no-scroll {
-    overflow: hidden;
-    touch-action: none;
-    /* evita pull-to-refresh em mobiles */
-/* } */ 
-
 /* ============================= */
-/* 13. BOTÃO FLUTUANTE "VOLTAR AO TOPO" */
+/* 13. BOTÃO FLUTUANTE “TOPO”    */
 /* ============================= */
 .scroll-to-top {
     position: fixed;
@@ -899,8 +736,6 @@ body {
     z-index: 9999;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-
-    /* centraliza o ícone */
     justify-content: center;
     align-items: center;
 }
@@ -913,12 +748,6 @@ body {
 
 .scroll-to-top i {
     font-size: 1.4rem;
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    width: auto;
-    height: auto;
-    text-align: center;
 }
 
 .scroll-to-top:hover {
@@ -952,7 +781,7 @@ body {
 }
 
 /* ============================= */
-/* 15. RESPONSIVO (TELAS >= 769px)*/
+/* 15. RESPONSIVO                */
 /* ============================= */
 @media (min-width: 769px) {
     .filtros-conteudo {
@@ -970,14 +799,11 @@ body {
     }
 }
 
-/* ============================= */
-/* 16. RESPONSIVO (TELAS <= 768px)*/
-/* ============================= */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
         margin-top: 0;
-        padding-bottom: 60px;
+        padding-bottom: 5px;
     }
 
     .main-content {
@@ -996,22 +822,32 @@ body {
         flex-direction: column;
     }
 
-    .hamburger-menu {
-        display: block;
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 9999;
-        background: rgba(0, 0, 0, 0.4);
-        border-radius: 6px;
-        padding: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.3s;
+    .filter-categories {
+        display: none;
     }
 
-    .hamburger-menu i {
-        font-size: 1.4rem;
-        color: #fff;
+    .filtros-mobile {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .filtros-conteudo {
+        display: none;
+    }
+
+    .filtros-conteudo.filtros-aberto {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* sidebar mobile */
+    .hamburger-menu {
+        display: block;
     }
 
     .sidebar {
@@ -1065,40 +901,11 @@ body {
         font-size: 1.1rem;
     }
 
-    .filter-categories {
-        display: none;
-    }
-
-    .filtros-mobile {
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .filtros-conteudo {
-        display: none;
-    }
-
-    .filtros-conteudo.filtros-aberto {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .items-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Botão de scroll top (16.1) */
     .scroll-to-top {
-        position: fixed;
         bottom: 80px;
         right: 20px;
         padding: 10px 14px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 9999;
         display: none;
-        transition: background-color 0.3s, transform 0.3s;
     }
 
     .scroll-to-top:hover {
@@ -1110,7 +917,6 @@ body {
         font-size: 1.2rem;
     }
 
-    /* Rodapé fixo no mobile (16.2) */
     .site-footer {
         position: fixed;
         bottom: 0;
@@ -1125,9 +931,6 @@ body {
     }
 }
 
-/* ============================= */
-/* 17. RESPONSIVO (TELAS <= 480px)*/
-/* ============================= */
 @media (max-width: 480px) {
     .hero-section {
         height: 220px;

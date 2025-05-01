@@ -1,0 +1,123 @@
+/* footer.css */
+
+/* ───────────────────────────────
+   RODAPÉ PRINCIPAL (site-footer)
+   ─────────────────────────────── */
+
+
+.site-footer:not(.site-footer-gift) {
+    position: static !important;
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    color: #f0f0f0;
+    padding: 3rem 1rem;
+    box-shadow: none;
+    transition: transform .4s ease, opacity .4s ease;
+}
+
+.site-footer__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.site-footer__title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: #ffd1dc;
+    margin: 30px 0 0;
+    line-height: 1;
+}
+
+.site-footer__date {
+    margin: 0.25em 0 1.25em;
+    font-size: 1rem;
+    letter-spacing: .5px;
+    opacity: .85;
+    color: #e0e0e0;
+}
+
+.site-footer__nav {
+    margin: 1.5rem 0;
+    font-size: .95rem;
+}
+
+.site-footer__nav a {
+    color: #f0f0f0;
+    text-decoration: none;
+    padding: 0 .5rem;
+    transition: color .3s;
+}
+
+.site-footer__nav a:hover {
+    color: #90ee90;
+    text-decoration: underline;
+}
+
+.site-footer__nav .sep {
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 .25rem;
+}
+
+.site-footer__note {
+    margin-top: 1.5rem;
+    font-size: .85rem;
+    color: #d0d0d0;
+    opacity: .9;
+}
+
+/* Classe usada para esconder o site-footer ao scroll */
+.site-footer.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* ───────────────────────────────
+     RODAPÉ FIXO INFERIOR (home-footer)
+     ─────────────────────────────── */
+.home-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: .9rem;
+    text-align: center;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, .5);
+    z-index: 999;
+    transition: transform .4s ease, opacity .4s ease;
+}
+
+.home-footer.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* ───────────────────────────────
+   FIXED FOOTER ESPECÍFICO (página de presentes)
+   ─────────────────────────────── */
+
+.site-footer-gift {
+    position: fixed;
+    /* agora não é mais sobrescrito */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    font-size: .9rem;
+    text-align: center;
+    color: #f0f0f0;
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, .5);
+    z-index: 999;
+    transform: translateY(0);
+    opacity: 1;
+    transition: transform .4s ease, opacity .4s ease;
+}
+
+/* quando rolar pra baixo: esconde */
+.site-footer-gift.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}

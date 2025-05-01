@@ -13,7 +13,7 @@
 
 body {
     margin: 0;
-    padding-bottom: 60px;
+    padding-bottom: 40px;
     /* espaço p/ rodapé fixo */
     font-family: "Poppins", sans-serif;
     color: #f5f5f5;
@@ -27,58 +27,7 @@ section {
 
 /* remova se não quiser radius global */
 
-/* ───────────────────────────────
-      1. NAVBAR
-      ─────────────────────────────── */
-.nav-menu {
-    position: fixed;
-    inset: 0 0 auto 0;
-    height: 88px;
-    padding: 0 48px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    backdrop-filter: blur(8px);
-    z-index: 1000;
-}
 
-.nav-menu::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, .7) 0%, rgba(0, 0, 0, .2) 60%, transparent 100%);
-    pointer-events: none;
-}
-
-.nav-links {
-    display: flex;
-    gap: 32px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.nav-link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: .55rem;
-    padding: 12px;
-    font: 600 1rem/1 "Poppins", sans-serif;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background .3s ease, transform .2s ease;
-}
-
-.nav-link i {
-    font-size: 1.1rem;
-}
-
-.nav-link:hover {
-    background: rgba(255, 255, 255, .15);
-    color: #90ee90;
-}
 
 .rifa {
     display: none;
@@ -156,7 +105,7 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 16px 30px;
+    padding: 0 16px 0px;
 }
 
 .bible-verse blockquote {
@@ -816,97 +765,94 @@ body.no-scroll {
 }
 
 /* ───────────────────────────────
+      10. LISTA DE PRESENTES
+      ─────────────────────────────── */
+/* Preview Lista de presentes */
+#featured-cta {
+    background: #0b1736;
+    /* escuro, em sintonia com o site */
+    color: #f5f5f5;
+    /* texto claro */
+    text-align: center;
+    padding: 80px 16px 60px;
+}
+
+#featured-cta h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 2px;
+    letter-spacing: .5px;
+}
+
+#featured-cta p {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 26px;
+    line-height: 1.5;
+    opacity: .85;
+}
+
+/* ─────────── PREVIEW “MAIS DESEJADOS” ─────────── */
+#featured-cta .items-grid {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    align-items: stretch;
+    margin: 0 auto 28px;
+    /* centraliza o grid dentro da seção */
+    max-width: 1100px;
+    /* opcional: limita a largura total como na lista */
+}
+
+
+#featured-cta .item-card {
+    width: 100%;
+    /* ocupa toda a coluna */
+    max-width: 260px;
+    /* mesmo width dos cards em gifts.html */
+}
+
+#featured-cta .item-card p {
+    text-align: left;
+    max-width: 700px;
+    margin: 0;
+    line-height: 1.5;
+    opacity: .85;
+}
+
+#featured-cta .item-card h3 {
+    text-align: left;
+}
+
+#featured-cta .item-link {
+    text-align: left;
+}
+
+/* botão “Ver Lista Completa” */
+#featured-cta .gifts-btn {
+    padding: 12px 32px;
+    background: #ffd1dc;
+    color: #0b1736;
+    border-radius: 40px;
+    font: 700 1rem/1 "Poppins", sans-serif;
+    text-decoration: none;
+    transition: filter .3s;
+}
+
+#featured-cta .gifts-btn:hover {
+    filter: brightness(.9);
+}
+
+/* ───────────────────────────────
    RODAPÉ FIXO
    ─────────────────────────────── */
-.home-footer,
-.site-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
-    font-size: .9rem;
-    text-align: center;
-    color: #f0f0f0;
-    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
-    box-shadow: 0 -2px 6px rgba(0, 0, 0, .5);
-    z-index: 999;
-    /* acima de quase tudo   */
-    transition: transform .4s ease, opacity .4s ease;
-    /* efeito “deslizar”    */
-}
 
-/*  oculto quando quiser “sumir” durante scroll  */
-.home-footer.hide,
-.site-footer.hide {
-    transform: translateY(100%);
-    opacity: 0;
-}
-
-/*  Ajuste opcional para telas menores  */
-@media(max-width:480px) {
-
-    .home-footer,
-    .site-footer {
-        font-size: .85rem;
-        padding: 12px;
-    }
-}
 
 
 /* ───────────────────────────────
       11. BREAKPOINTS
       ─────────────────────────────── */
 @media (max-width: 768px) {
-
-    /* Ícone do menu hambúrguer visível no mobile */
-    .hamburger-menu {
-        display: block;
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 1.6rem;
-        cursor: pointer;
-        z-index: 1100;
-    }
-
-    /* Barra de navegação ajustada: espaçamento e alinhamento */
-    .nav-menu {
-        padding: 0 20px;
-        justify-content: space-between;
-        backdrop-filter: blur(1px);
-    }
-
-    /* Menu lateral (nav-links) ocupando toda a altura da tela e escondido fora da tela por padrão */
-    .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 240px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-        padding: 100px 24px 24px;
-        background: rgba(12, 18, 38, .97);
-        backdrop-filter: blur(12px);
-        transform: translateX(-100%);
-        /* mantém o menu fora da tela inicialmente */
-        transition: transform .35s ease;
-        box-shadow: none;
-    }
-
-    /* Menu lateral visível quando o nav possui a classe .open (aplicada via JS) */
-    .nav-menu.open .nav-links {
-        transform: translateX(0);
-        box-shadow: 2px 0 8px rgba(0, 0, 0, .6);
-    }
-
-    /* Links de navegação ocupam largura total no menu lateral (fácil de tocar) */
-    .nav-link {
-        width: 100%;
-        font-size: 1.05rem;
-    }
 
     /* Seção hero (cabeçalho com nome do casal e data) centralizada no mobile */
     .hero-home {
@@ -1122,6 +1068,17 @@ body.no-scroll {
     /* Formulário de mensagem – impede redimensionamento do textarea */
     .guest-form textarea {
         resize: none;
+    }
+
+    #featured-cta .items-grid {
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(auto-fill, minmax(30%, 2fr));
+        align-items: stretch;
+        margin: 0 auto 28px;
+        /* centraliza o grid dentro da seção */
+        max-width: 1100px;
+        /* opcional: limita a largura total como na lista */
     }
 }
 

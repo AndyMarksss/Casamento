@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #0B1736;
+    color: #f5f5f5;
+}
+/* ───────────────────────────────
+   1. Fundo + layout principal
+   ─────────────────────────────── */
+.rsvp-page {
+    background: linear-gradient(135deg, #0B1736 0%, #081229 100%);
+    display: flex;
+    align-items: center;
+    /* centra vertical */
+    justify-content: center;
+    /* centra horizontal */
+    min-height: calc(77vh - 88px - 50px);
+    /* 100vh menos navbar e footer */
+    padding: 0 1rem;
+    text-align: center;
+}
+
+/* 2. Conteúdo interno (único bloco) */
+.rsvp-page .main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* filhos centralizados */
+    justify-content: center;
+    color: #f5f5f5;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 3. Título e ícone */
+.rsvp-page .main-content i {
+    font-size: 4rem;
+    color: #ffd1dc;
+    margin-bottom: .75rem;
+}
+
+.rsvp-page .main-content h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+/* 4. Responsividade */
+@media (max-width: 768px) {
+    .rsvp-page .main-content i {
+        font-size: 3rem;
+    }
+
+    .rsvp-page .main-content h1 {
+        font-size: 2rem;
+    }
+}
+
+/* ───────────────────────────────
+     5. Animação “Em Desenvolvimento”
+     ─────────────────────────────── */
+.dev-animation {
+    margin-top: 2rem;
+}
+
+.dev-animation .dev-icon {
+    font-size: 4rem;
+    color: #ffd700;
+    margin-bottom: .5rem;
+}
+
+.dev-animation p {
+    font-size: 1.2rem;
+    margin: .25rem 0 1rem;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .6;
+    }
+}
+
+/* ───────────────────────────────
+     6. Barra de Progresso “Fancy”
+     ─────────────────────────────── */
+.progress-fancy {
+    width: 80%;
+    max-width: 400px;
+    height: 12px;
+    margin: 1rem auto 0;
+    background: #333;
+    border-radius: 6px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, .5);
+    overflow: hidden;
+}
+
+.progress-bar-fancy {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6af 0%, #46d 50%, #6af 100%);
+    animation: fancyFill 3s ease-in-out infinite;
+    position: relative;
+    transform-origin: left center;
+}
+
+.progress-bar-fancy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(45deg,
+            rgba(255, 255, 255, .3) 0 10px,
+            transparent 10px 20px);
+    animation: stripeMove 1s linear infinite;
+}
+
+@keyframes fancyFill {
+
+    0%,
+    100% {
+        width: 0%;
+    }
+
+    50% {
+        width: 100%;
+    }
+}
+
+@keyframes stripeMove {
+    to {
+        background-position: 40px 0;
+    }
+}

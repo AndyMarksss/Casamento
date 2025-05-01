@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Lista de Presentes</title>
-    <link rel="icon" href="../lista-presentes/src/assets/images/gift.png" type="image/png">
+    <link rel="icon" href="./src/assets/images/gift.png" type="image/png">
 
     <!-- ícones do Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
@@ -24,11 +24,62 @@
 
     <!-- CSS Reset e Estilos -->
     <link rel="stylesheet" href="src/css/reset.css">
-    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/nav-bar.css">
+    <link rel="stylesheet" href="src/css/gift.css">
+    <link rel="stylesheet" href="src/css/footer.css">
 
 </head>
 
 <body>
+
+    <div id="menuOverlay" class="menu-overlay"></div>
+    <!-- ============================= -->
+    <!-- 3. NAVBAR (Mobile)             -->
+    <!-- ============================= -->
+    <nav class="nav-menu" id="navbar">
+        <button class="hamburger-menu" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <ul class="nav-links">
+            <!-- links de página -->
+            <li>
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-home"></i> Início
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="messages.html">
+                    <i class="fas fa-envelope"></i> Mural de Mensagens
+                </a>
+            </li>
+            <li>
+                <a class="nav-link active" href="gifts.html">
+                    <i class="fas fa-gift"></i> Lista de Presentes
+                </a>
+            </li>
+            <li>
+                <a class="nav-link" href="rsvp.html">
+                    <i class="fas fa-calendar-check"></i> RSVP
+                </a>
+            </li>
+
+            <!-- separador (opcional) -->
+            <li class="divider"></li>
+
+            <!-- links “de sidebar” só para mobile -->
+            <li class="mobile-only"><a href="#" class="menuTodosItens"><i class="fas fa-list-ul"></i> Todos os Itens</a>
+            </li>
+            <li class="mobile-only"><a href="#" class="menuMaisDesejados"><i class="fas fa-heart"></i> Mais
+                    Desejados</a>
+            </li>
+            <li class="mobile-only"><a href="#" class="menuPresentesRecebidos"><i class="fas fa-gift"></i> Presentes
+                    Recebidos</a></li>
+            <li class="mobile-only"><a href="#" id="abrirPixModal" onclick="abrirPixModal()"><i
+                        class="fas fa-qrcode"></i> Pix</a></li>
+        </ul>
+    </nav>
+    <!-- Fim do NAV -->
 
     <!-- ============================= -->
     <!-- 3. CABEÇALHO / HERO SECTION   -->
@@ -36,9 +87,9 @@
     <header class="hero-section">
 
         <!-- Botão de hamburger (visível em telas pequenas) -->
-        <div class="hamburger-menu" onclick="toggleSidebar()">
+        <button class="sidebar-toggle" onclick="toggleSidebar()" aria-label="Abrir filtros">
             <i class="fas fa-bars"></i>
-        </div>
+        </button>
         <!-- Fim do Botão de hamburger -->
 
         <!-- Overlay sutil (escurece a imagem de fundo) -->
@@ -47,7 +98,6 @@
         <!-- Conteúdo do cabeçalho -->
         <div class="hero-content">
             <div class="hero-top">
-                <img src="src/assets/images/gift.png" alt="gift.png" class="hero-icon">
                 <h1 class="hero-title">Lista de Presentes</h1>
             </div>
             <h2 class="couple-names">Anderson &amp; Laura</h2>
@@ -69,29 +119,35 @@
         <!-- 4.1 MENU LATERAL -->
         <aside class="sidebar">
 
+            <!-- MENU Desktop -->
+            <nav class="nav-menu desktop-only">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="index.html"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a class="nav-link" href="messages.html"><i class="fas fa-envelope"></i> Mural de Mensagens</a>
+                    </li>
+                    <li><a class="nav-link active" href="gifts.html"><i class="fas fa-gift"></i> Lista de Presentes</a>
+                    </li>
+                    <li><a class="nav-link" href="rsvp.html"><i class="fas fa-calendar-check"></i> RSVP</a></li>
+                </ul>
+            </nav>
+
             <!-- Início Menu -->
             <nav class="menu">
                 <ul>
                     <li>
-                        <a href="../../index.html" id="menuVoltar" onclick="voltar()">
-                            <i class="fa fa-chevron-left"></i>
-                            Voltar
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" id="menuTodosItens">
+                        <a href="#" class="menuTodosItens">
                             <i class="fas fa-list-ul"></i>
                             Todos os Itens
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="menuMaisDesejados">
+                        <a href="#" class="menuMaisDesejados">
                             <i class="fas fa-heart"></i>
                             Mais Desejados
                         </a>
                     </li>
                     <li>
-                        <a href="#" id="menuPresentesRecebidos">
+                        <a href="#" class="menuPresentesRecebidos">
                             <i class="fas fa-gift"></i>
                             Presentes Recebidos
                         </a>
@@ -227,8 +283,35 @@
     <!-- ============================= -->
     <!-- 6. IMPORTAÇÃO DE SCRIPTS JS   -->
     <!-- ============================= -->
+    <script src="src/js/home.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="src/js/sheets.js"></script>
+    <script src="src/js/nav.js" defer></script>
+    <script src="src/js/footer.js" defer></script>
+
+    <!-- ============================= -->
+    <!-- 8. Footer principal           -->
+    <!-- ============================= -->
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <h2 class="site-footer__title">Anderson &amp; Laura</h2>
+            <div class="couple-decor">— ❤️ —</div>
+            <p class="site-footer__date">
+                📅 28 de setembro de 2025 • 📍 Chalezinho Morumbi, São Paulo
+            </p>
+            <nav class="site-footer__nav">
+                <a href="index.html">Início</a>
+                <span class="sep">|</span>
+                <a href="messages.html">Mural</a>
+                <span class="sep">|</span>
+                <a href="gifts.html">Presentes</a>
+                <span class="sep">|</span>
+                <a href="rsvp.html">RSVP</a>
+            </nav>
+            <p class="site-footer__note">Site desenvolvido com carinho por Andy</p>
+        </div>
+    </footer>
+    <!-- Fim do Footer principal -->
 
     <!-- ============================= -->
     <!-- 7. BOTÃO FLUTUANTE (TOP)      -->
@@ -236,12 +319,13 @@
     <div class="scroll-to-top" onclick="scrollToTop()">
         <i class="fas fa-arrow-up"></i>
     </div>
+    <!-- Fim do Botão Flutuante -->
 
     <!-- ============================= -->
-    <!-- 8. RODAPÉ FIXO                -->
+    <!-- 9. RODAPÉ FIXO                -->
     <!-- ============================= -->
-    <footer class="site-footer">
-        © 2025 - Criado por Andy. Algumas imagens são ilustrativas
+    <footer class="site-footer site-footer-gift">
+        © 2025 - Algumas imagens são ilustrativas
         e os links redirecionam para sites de terceiros
     </footer>
     <!-- Fim do Rodapé -->
@@ -249,16 +333,3 @@
 </body>
 
 </html>
-
-<!-- ============================= -->
-<!-- 9. COMENTÁRIOS FINAIS        -->
-<!-- ============================= 
-    Este arquivo HTML é parte de um projeto de lista de presentes.
-    O código JavaScript e CSS são carregados externamente.
-    O conteúdo dinâmico é gerado via JavaScript, utilizando a biblioteca PapaParse
-    para manipulação de dados CSV.
-    O modal do Pix é implementado com JavaScript puro, permitindo copiar a chave Pix
-    para a área de transferência.
-    O layout é responsivo e adaptável a diferentes tamanhos de tela.
-    O design é moderno e utiliza ícones do Font Awesome para melhorar a experiência do usuário.
--->
