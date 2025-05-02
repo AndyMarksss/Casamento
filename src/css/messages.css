@@ -11,6 +11,15 @@ body {
     /* espaço para a navbar fixa   */
 }
 
+header p {
+    color: #fff;
+}
+
+header a{ 
+    color: #f3eea0;
+    text-decoration: none;
+}
+
 .mural-hero {
     margin: 0 0 40px;
     padding: 40px 16px 0;
