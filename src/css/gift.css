@@ -14,6 +14,11 @@ body {
     padding-bottom: 40px;
 }
 
+body.no-scroll {
+    overflow: hidden;
+    touch-action: none;
+}
+
 /* ============================= */
 /* 2. HERO SECTION               */
 /* ============================= */
@@ -665,6 +670,22 @@ body {
     margin-right: 8px;
 }
 
+/* Destacar o link Pix em verde #90ee90 sem usar ID */
+.nav-link.pix-link {
+    color: #90ee90;
+}
+
+.nav-link.pix-link i {
+    color: #90ee90;
+}
+
+/* Hover suave mantendo o verde */
+.nav-link.pix-link:hover {
+    background: rgba(144, 238, 144, 0.15);
+    color: #90ee90;
+}
+
+
 /* ============================= */
 /* 11. HAMBURGER MENU (sidebar)  */
 /* ============================= */
@@ -930,27 +951,7 @@ body {
         font-size: 0.9rem;
     }
 
-    .pix-modal.show {
-        display: flex !important;
-        /* vira flex */
-        align-items: center !important;
-        /* centra vertical */
-        justify-content: center !important;
-        /* centra horizontal */
-        padding: 0 1rem !important;
-        /* folga nas laterais */
-        z-index: 9999;
-        /* mantém acima de tudo */
-    }
 
-    /* 2) remove o margin-top que empurra para baixo */
-    .pix-modal-content {
-        margin: 0 !important;
-        max-height: 90vh;
-        /* evita overflow excessivo */
-        overflow-y: auto;
-        /* scroll interno se precisar */
-    }
 }
 
 @media (max-width: 480px) {

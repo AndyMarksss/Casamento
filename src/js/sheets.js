@@ -35,6 +35,7 @@ fetch(csvUrl)
             setupStatusAndSortButtons();
             setupMaisDesejadosFilter();
             setupPresentesRecebidosFilter();
+            setupMenuTodosItensFilter();
         }
 
         // Se estivermos na Home (homeItemsGrid existe) ─────────────
@@ -85,6 +86,39 @@ fetch(csvUrl)
         }
     })
     .catch(err => console.error('Erro ao carregar CSV:', err));
+
+// ───────────────────────────────────────────────────────────
+// NOVA FUNÇÃO: trata cliques em “Todos os Itens” na sidebar
+// ───────────────────────────────────────────────────────────
+function setupMenuTodosItensFilter() {
+    document.querySelectorAll('.menuTodosItens').forEach(link => {
+        link.addEventListener('click', e => {
+            e.preventDefault();
+
+            // 1) Limpa quaisquer filtros ativos
+            filtroMaisDesejados = false;
+            filtroPresentesRecebidos = false;
+            statusFiltro = precoOrdem = null;
+
+            // 2) Remove estados visuais nos botões de sort
+            document.querySelectorAll('.sort-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.display = '';
+            });
+
+            // 3) Seta categoria “todos”
+            categoriaAtiva = 'todos';
+            subcategoriaAtiva = null;
+
+            // 4) Reaplica o filtro e atualiza UI inteira
+            aplicarFiltro();
+            atualizarEstadoFiltro();
+
+            // 5) Fecha a sidebar no mobile (se estiver aberta)
+            toggleSidebar(true);
+        });
+    });
+}
 
 /* ============================= */
 /* 3. RENDERIZAÇÃO DOS CARDS     */
@@ -420,10 +454,11 @@ function setupPresentesRecebidosFilter() {
 function abrirPixModal() {
     const m = document.getElementById('pixModal');
     if (m) {
-        // remove qualquer exibição inline anterior
         m.style.display = 'block';
-        // adiciona a classe que o CSS espera
         m.classList.add('show');
+        // trava o scroll tanto no html quanto no body
+        document.body.classList.add('no-scroll');
+        document.documentElement.classList.add('no-scroll');
     }
 }
 
@@ -436,10 +471,15 @@ function fecharPixModal() {
             if (m.classList.contains('fechando')) {
                 m.style.display = 'none';
                 m.classList.remove('fechando');
+                // destrava o scroll
+                document.body.classList.remove('no-scroll');
+                document.documentElement.classList.remove('no-scroll');
             }
         }, 300);
     }
 }
+
+
 document.addEventListener('click', e => {
     const m = document.getElementById('pixModal');
     if (m && m.style.display === 'block' && e.target === m) fecharPixModal();

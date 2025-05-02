@@ -17,7 +17,7 @@
             rgba(12, 18, 38, 0.90) 0%,
             rgba(12, 18, 38, 0.00) 100%);
     /* blur suave por trás */
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(8px);
     /* remove qualquer borda inferior */
     border-bottom: none;
@@ -120,7 +120,6 @@
         gap: 24px;
         padding: 100px 24px 24px;
         background: rgba(12, 18, 38, .97);
-        backdrop-filter: blur(12px);
         transform: translateX(-100%);
         opacity: 0;
         transition: transform .35s ease, opacity .35s ease;
