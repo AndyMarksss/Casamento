@@ -420,11 +420,13 @@ function setupPresentesRecebidosFilter() {
 function abrirPixModal() {
     const m = document.getElementById('pixModal');
     if (m) {
+        // remove qualquer exibição inline anterior
         m.style.display = 'block';
-        m.classList.add('ativo');
-        m.classList.remove('fechando');
+        // adiciona a classe que o CSS espera
+        m.classList.add('show');
     }
 }
+
 function fecharPixModal() {
     const m = document.getElementById('pixModal');
     if (m) {

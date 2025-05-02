@@ -639,7 +639,7 @@ body {
     border-radius: 8px;
     text-align: center;
     display: inline-block;
-    margin: 10px auto;
+    margin: 10px;
     transition: background-color 0.3s, transform 0.3s ease;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -928,6 +928,28 @@ body {
         padding: 10px;
         z-index: 999;
         font-size: 0.9rem;
+    }
+
+    .pix-modal.show {
+        display: flex !important;
+        /* vira flex */
+        align-items: center !important;
+        /* centra vertical */
+        justify-content: center !important;
+        /* centra horizontal */
+        padding: 0 1rem !important;
+        /* folga nas laterais */
+        z-index: 9999;
+        /* mantém acima de tudo */
+    }
+
+    /* 2) remove o margin-top que empurra para baixo */
+    .pix-modal-content {
+        margin: 0 !important;
+        max-height: 90vh;
+        /* evita overflow excessivo */
+        overflow-y: auto;
+        /* scroll interno se precisar */
     }
 }
 
