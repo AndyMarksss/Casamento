@@ -121,3 +121,14 @@
     transform: translateY(100%);
     opacity: 0;
 }
+
+.site-footer__date a{
+    color: #fff;
+    text-decoration: none;
+    transition: color .3s;    
+}
+
+.site-footer__date a:hover {
+    color: #90ee90;
+    text-decoration: underline;
+}
